@@ -1,0 +1,711 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="DDL,DML,DCL,DQL   分类 全称 说明    DDL Data Definition Language 数据定义语言，用来定义数据对象(数据库，表，字段)   DML Data Manipulation Language 数据操作语言，用来对数据库表中的数据进行增删改   DQL Data Query Language 数据查询语言，用来查询数据库中表的记录   DCL Data C">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux_6">
+<meta property="og:url" content="http://example.com/2023/07/31/Linux-6/index.html">
+<meta property="og:site_name" content="Linux_blog">
+<meta property="og:description" content="DDL,DML,DCL,DQL   分类 全称 说明    DDL Data Definition Language 数据定义语言，用来定义数据对象(数据库，表，字段)   DML Data Manipulation Language 数据操作语言，用来对数据库表中的数据进行增删改   DQL Data Query Language 数据查询语言，用来查询数据库中表的记录   DCL Data C">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-07-31T02:05:34.000Z">
+<meta property="article:modified_time" content="2023-07-31T11:51:21.098Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  <title>Linux_6 - Linux_blog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hint.css@2/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Fluid</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                Archives
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                Categories
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                Tags
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                About
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="Linux_6">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2023-07-31 02:05" pubdate>
+        July 31, 2023 am
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      21k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      179 分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Linux_6</h1>
+            
+            <div class="markdown-body">
+              <h1 id="DDL-DML-DCL-DQL"><a href="#DDL-DML-DCL-DQL" class="headerlink" title="DDL,DML,DCL,DQL"></a>DDL,DML,DCL,DQL</h1><table>
+<thead>
+<tr>
+<th>分类</th>
+<th>全称</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>DDL</td>
+<td>Data Definition Language</td>
+<td>数据定义语言，用来定义数据对象(数据库，表，字段)</td>
+</tr>
+<tr>
+<td>DML</td>
+<td>Data Manipulation Language</td>
+<td>数据操作语言，用来对数据库表中的数据进行增删改</td>
+</tr>
+<tr>
+<td>DQL</td>
+<td>Data Query Language</td>
+<td>数据查询语言，用来查询数据库中表的记录</td>
+</tr>
+<tr>
+<td>DCL</td>
+<td>Data Control Language</td>
+<td>数据控制语言，用来创建数据库用户、控制数据库的访问权限</td>
+</tr>
+</tbody></table>
+<h2 id="DDL"><a href="#DDL" class="headerlink" title="DDL"></a>DDL</h2><p>数据定义语言 (Data Definition Language, DDL) ,它主要包括三个关键字：create ，alter , drop（数据库关键字不分大小写 ）,主要操作对象 有数据库、表、索引、视图等.</p>
+<h3 id="操作数据库"><a href="#操作数据库" class="headerlink" title="操作数据库"></a>操作数据库</h3><h4 id="创建数据库"><a href="#创建数据库" class="headerlink" title="创建数据库"></a>创建数据库</h4><figure class="highlight bash"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><pre><code class="hljs bash">create databases 数据库名称;<br></code></pre></td></tr></table></figure>
+
+<h4 id="使用这个数据库"><a href="#使用这个数据库" class="headerlink" title="使用这个数据库"></a>使用这个数据库</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">use 数据库名称;<br></code></pre></td></tr></table></figure>
+
+<h4 id="删除这个数据库"><a href="#删除这个数据库" class="headerlink" title="删除这个数据库"></a>删除这个数据库</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">drop database 数据库名称;<br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="操作表结构"><a href="#操作表结构" class="headerlink" title="操作表结构"></a>操作表结构</h3><h4 id="创建一张用户表"><a href="#创建一张用户表" class="headerlink" title="创建一张用户表"></a>创建一张用户表</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">CREATE TABLE T_USER(<br><span class="hljs-built_in">id</span> int(3) ,<br>user_name varchar(30) <br>)<br></code></pre></td></tr></table></figure>
+
+<h4 id="删除表"><a href="#删除表" class="headerlink" title="删除表"></a>删除表</h4><figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs pgsql"><span class="hljs-keyword">DROP</span> <span class="hljs-keyword">TABLE</span> T_USER;<br></code></pre></td></tr></table></figure>
+
+<h4 id="修改表"><a href="#修改表" class="headerlink" title="修改表"></a>修改表</h4><p>添加字段</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">ALTER</span> <span class="hljs-keyword">TABLE</span> T_USER <span class="hljs-keyword">ADD</span> address <span class="hljs-type">VARCHAR</span>(<span class="hljs-number">2</span>);<br></code></pre></td></tr></table></figure>
+
+<p>修改字段类型</p>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs pgsql"><span class="hljs-keyword">ALTER</span> <span class="hljs-keyword">TABLE</span> T_USER MODIFY address <span class="hljs-type">VARCHAR</span>(<span class="hljs-number">50</span>);<br></code></pre></td></tr></table></figure>
+
+<p>修改字段名称</p>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs pgsql"><span class="hljs-keyword">ALTER</span> <span class="hljs-keyword">TABLE</span> T_USER <span class="hljs-keyword">RENAME</span> <span class="hljs-keyword">COLUMN</span> address <span class="hljs-keyword">TO</span> address666;<br></code></pre></td></tr></table></figure>
+
+<p>删除字段</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">ALTER TABLE T_USER DROP COLUMN address666;<br></code></pre></td></tr></table></figure>
+
+<h4 id="表结构的约束"><a href="#表结构的约束" class="headerlink" title="表结构的约束"></a>表结构的约束</h4><p>非空约束</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">ALTER TABLE T_USER <br>  CHANGE <span class="hljs-built_in">id</span> <span class="hljs-built_in">id</span> INT NOT NULL COMMENT <span class="hljs-string">&#x27;主键&#x27;</span>;<br></code></pre></td></tr></table></figure>
+
+<p>或者在建表的时候指定</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 删除表</span><br>DROP TABLE T_USER;<br>CREATE TABLE T_USER(<br><span class="hljs-built_in">id</span> INT(5) NOT NULL COMMENT  <span class="hljs-string">&#x27;主键&#x27;</span>,<br>user_name VARCHAR(20) COMMENT <span class="hljs-string">&#x27;账号&#x27;</span> ,<br>age INT(2) COMMENT <span class="hljs-string">&#x27;年龄&#x27;</span> DEFAULT 18<br>)COMMENT=<span class="hljs-string">&#x27;用户表&#x27;</span> ;<br></code></pre></td></tr></table></figure>
+
+<p>默认值</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash">DROP TABLE T_USER;<br>CREATE TABLE T_USER(<br><span class="hljs-built_in">id</span> INT(5)  NOT NULL COMMENT  <span class="hljs-string">&#x27;主键&#x27;</span>,<br>user_name VARCHAR(20) COMMENT <span class="hljs-string">&#x27;账号&#x27;</span> ,<br>age INT(2) COMMENT <span class="hljs-string">&#x27;年龄&#x27;</span> DEFAULT 18<br>)COMMENT=<span class="hljs-string">&#x27;用户表&#x27;</span> ;<br></code></pre></td></tr></table></figure>
+
+<p>唯一约束</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash">DROP TABLE T_USER;<br>CREATE TABLE T_USER(<br><span class="hljs-built_in">id</span> INT(5)  UNIQUE COMMENT  <span class="hljs-string">&#x27;主键&#x27;</span>,<br>user_name VARCHAR(20) COMMENT <span class="hljs-string">&#x27;账号&#x27;</span> ,<br>age INT(2) COMMENT <span class="hljs-string">&#x27;年龄&#x27;</span> DEFAULT 18<br>)COMMENT=<span class="hljs-string">&#x27;用户表&#x27;</span> ;<br></code></pre></td></tr></table></figure>
+
+<p>建表后设置字段的唯一约束条件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">ALTER TABLE t_user add CONSTRAINT unique_name UNIQUE(user_name);<br>alter table t_user add unique (user_name);<br></code></pre></td></tr></table></figure>
+
+<p>主键</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash">DROP TABLE T_USER;<br>CREATE TABLE T_USER(<br><span class="hljs-built_in">id</span> INT(5)  PRIMARY KEY COMMENT  <span class="hljs-string">&#x27;主键&#x27;</span>,<br>user_name VARCHAR(20) COMMENT <span class="hljs-string">&#x27;账号&#x27;</span> ,<br>age INT(2) COMMENT <span class="hljs-string">&#x27;年龄&#x27;</span> DEFAULT 18<br>)COMMENT=<span class="hljs-string">&#x27;用户表&#x27;</span> ;<br></code></pre></td></tr></table></figure>
+
+<p>联合主键：多个字段组合的信息是不能出现重复的</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">ALTER TABLE t_user<br>  ADD PRIMARY KEY (<span class="hljs-built_in">id</span>, user_name);<br></code></pre></td></tr></table></figure>
+
+<p>外键</p>
+<p>​    外键就是在主表中可以重复出现,但是它的值是另一个表的主键,外键使两个表相关，外键可约束表的数据的更新，外键和主键表联系，数据类型要统一，长度(存储大小)要统一，在更新数据的时候会保持一致性</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 删除表</span><br>DROP TABLE T_USER;<br>CREATE TABLE T_USER(<br><span class="hljs-built_in">id</span> INT(5)  PRIMARY KEY COMMENT  <span class="hljs-string">&#x27;主键&#x27;</span>,<br>user_name VARCHAR(20) COMMENT <span class="hljs-string">&#x27;账号&#x27;</span> ,<br>age INT(2) COMMENT <span class="hljs-string">&#x27;年龄&#x27;</span> DEFAULT 18,<br>deptid INT(30) ,<br>CONSTRAINT FK_DEPT_ID FOREIGN KEY(deptid) REFERENCES T_DEPT(dept_id)<br>)COMMENT=<span class="hljs-string">&#x27;用户表&#x27;</span> ;<br></code></pre></td></tr></table></figure>
+
+<p>check</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs bash">DROP TABLE T_USER;<br>CREATE TABLE T_USER(<br><span class="hljs-built_in">id</span> INT(5)  PRIMARY KEY COMMENT  <span class="hljs-string">&#x27;主键&#x27;</span>,<br>user_name VARCHAR(20) COMMENT <span class="hljs-string">&#x27;账号&#x27;</span> ,<br>age INT(3) COMMENT <span class="hljs-string">&#x27;年龄&#x27;</span> ,<br>CHECK (age &gt; 0 AND age &lt; 40)<br>)COMMENT=<span class="hljs-string">&#x27;用户表&#x27;</span> ;<br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="DML"><a href="#DML" class="headerlink" title="DML"></a>DML</h2><p>数据操纵语言（Data Manipulation Language, DML）是SQL语言中，负责对数据库对象运行数据访问工作的指令集，以INSERT、UPDATE、DELETE三种指令为核心，分别代表插入、更新与删除。</p>
+<h3 id="INSERT"><a href="#INSERT" class="headerlink" title="INSERT"></a>INSERT</h3><p>插入单行记录</p>
+<figure class="highlight n1ql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs n1ql"><span class="hljs-keyword">INSERT</span> <span class="hljs-keyword">into</span> 列名（列名，。。）<span class="hljs-keyword">values</span>(,)<br></code></pre></td></tr></table></figure>
+
+<h3 id="UPDATE"><a href="#UPDATE" class="headerlink" title="UPDATE"></a>UPDATE</h3><figure class="highlight n1ql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs n1ql"><span class="hljs-keyword">update</span> 表名 <span class="hljs-keyword">set</span> 字段名=值，字段名=值。。 <span class="hljs-keyword">where</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="DELETE"><a href="#DELETE" class="headerlink" title="DELETE"></a>DELETE</h3><p>delete删除：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">delete from t_student <span class="hljs-built_in">where</span> <span class="hljs-built_in">id</span> = 1;<br><span class="hljs-comment"># 如果不带where 条件 那么表示删除该表中的所有的记录 慎用!!!  删表跑路</span><br>delete from t_student ; <br><span class="hljs-comment"># delete insert update 语句都会走事务处理，也就是我们需要显示的commit和rollback;</span><br></code></pre></td></tr></table></figure>
+
+<p>truncate删除：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># truncate 直接清空表结构中的所有的数据，效率高，但是不能回滚。</span><br>TRUNCATE TABLE t_user_1 <span class="hljs-comment"># where 1 = 1;</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="DQL"><a href="#DQL" class="headerlink" title="DQL"></a>DQL</h2><p>数据查询语言（Data Query Language, DQL）是SQL语言中，负责进行数据查询而不会对数据本身进行修改的语句，这是最基本的SQL语句。保留字SELECT是DQL（也是所有SQL）用得最多的动词，其他DQL常用的保留字有FROM，WHERE，GROUP BY，HAVING和ORDER BY。这些DQL保留字常与其他类型的SQL语句一起使用。</p>
+<h3 id="单表查询"><a href="#单表查询" class="headerlink" title="单表查询"></a>单表查询</h3><p>查询语句的语法规则</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash">SELECT &lt;字段列表&gt;<br>FROM &lt;表名&gt;<br>[WHERE &lt;查询条件&gt;]<br>[ORDER BY &lt;排序字段&gt;]<br>[GROUP BY &lt;分组字段&gt;]<br><span class="hljs-comment"># select NOW()</span><br></code></pre></td></tr></table></figure>
+
+<p>为查询准备的表结构</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs bash">CREATE TABLE t_student (<br><span class="hljs-built_in">id</span> int(3) primary key auto_increment ,<br>stuname varchar(30) not null ,<br>age int(3) ,<br>sex varchar(3) ,<br>birthday <span class="hljs-built_in">date</span> ,<br>address varchar(50),<br>class_id int(3)<br>);<br><br>CREATE TABLE t_class(<br>class_id varchar(30) PRIMARY KEY ,<br>class_name varchar(30) UNIQUE ,<br>class_desc varchar(50)<br>);<br></code></pre></td></tr></table></figure>
+
+<p>单表查询不带条件的查询</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 1.查询出所有的学生信息  所有的学生的所有字段的信息</span><br>select * from t_student ;<br><br><span class="hljs-comment"># 2.查询出所有的学生的姓名和性别</span><br>select stuname,sex from t_student;<br><br><span class="hljs-comment"># 3.对查询的表和列设置对应的别名</span><br>select stuname as <span class="hljs-string">&#x27;姓名&#x27;</span> ,sex as <span class="hljs-string">&quot;性别&quot;</span> from t_student;<br> <span class="hljs-comment"># 别名简写可以省略 as  和 单引号</span><br> select stuname 名称 ,sex 性别 from t_student;<br><br><span class="hljs-comment"># 表也可以取别名</span><br>select t_student.stuname ,t_student.sex from t_student;<br>select t1.stuname,t1.sex from t_student as t1;<br>select t1.stuname,t1.sex from t_student  t1;<br><br><br><span class="hljs-comment"># 自己增加查询的字段</span><br>select stuname,sex,18 常量 from t_student;<br><br><span class="hljs-comment"># 4.查询出所有的学生信息，并且显示的形式是【张三】18【岁】</span><br>select stuname,age,concat(<span class="hljs-string">&#x27;【&#x27;</span>,stuname,<span class="hljs-string">&#x27;】&#x27;</span>,age,<span class="hljs-string">&#x27;【岁】&#x27;</span>) from t_student;<br></code></pre></td></tr></table></figure>
+
+<p>单表查询带条件的</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 5.查询出学生表中张三的所有的信息</span><br>select * from t_student <span class="hljs-built_in">where</span> stuname = <span class="hljs-string">&#x27;张三&#x27;</span>;<br><br><span class="hljs-comment"># 6.查询出学生表中年龄在18到22之间的学生的所有信息</span><br>select * from t_student <span class="hljs-built_in">where</span> age &gt;=18 and age &lt;= 22;<br>select * from t_student <span class="hljs-built_in">where</span> age BETWEEN 18 and 22 ;<br><br><span class="hljs-comment"># 7.查询出学生表中编号为1和3的学生信息</span><br><br>select * <br>from t_student<br><span class="hljs-built_in">where</span> <span class="hljs-built_in">id</span> = 1 or <span class="hljs-built_in">id</span> = 3;<br><br>select * from t_student <span class="hljs-built_in">where</span> <span class="hljs-built_in">id</span> <span class="hljs-keyword">in</span> (1,3)<br><br><span class="hljs-comment"># 8.查询出学生表中地址信息为空的学生信息</span><br><span class="hljs-comment"># 不行 # </span><br><span class="hljs-comment"># select * from t_student where address = &#x27;&#x27;;</span><br><span class="hljs-comment"># select * from t_student where address = null;</span><br>select * from t_student <span class="hljs-built_in">where</span> address is null;<br><span class="hljs-comment"># 不为空的情况</span><br>select * from t_student <span class="hljs-built_in">where</span> address is not null;<br><br><span class="hljs-comment"># 9.查询出所有姓张的学生的所有信息 -- 模糊查询 like</span><br>select * from t_student <span class="hljs-built_in">where</span> stuname like <span class="hljs-string">&#x27;张%&#x27;</span> ;<br><span class="hljs-comment"># 如果不加% 其实和=差不多</span><br>select * from t_student <span class="hljs-built_in">where</span> stuname like <span class="hljs-string">&#x27;张三&#x27;</span>;<br><br>select * from t_student <span class="hljs-built_in">where</span> stuname like <span class="hljs-string">&#x27;%三%&#x27;</span>;<br><br><br><span class="hljs-comment"># 10.查询出学生表中年龄大于20的男同学的所有信息</span><br>select * from t_student <span class="hljs-built_in">where</span> age &gt; 20 and sex = <span class="hljs-string">&#x27;男&#x27;</span><br><br><span class="hljs-comment"># 11 查询出学生表中年龄大于20或者住址在长沙的同学的所有信息</span><br>select * from t_student <span class="hljs-built_in">where</span> age  &gt; 20 or address like <span class="hljs-string">&#x27;%长沙%&#x27;</span><br><br><span class="hljs-comment"># 12 查询出所有的学生信息，根据id降序  desc 降序 asc 升序【默认就是升序，也就是 asc可以省略】</span><br>select * <br>from t_student <br>order by <span class="hljs-built_in">id</span> desc;<br><br>select * <br>from t_student <br>order by <span class="hljs-built_in">id</span> asc;<br><br>select * <br>from t_student <br>order by <span class="hljs-built_in">id</span> ;<br><br><span class="hljs-comment"># 排序我们可以根据多个字段来排列，前面的字段优先排序</span><br><span class="hljs-comment"># 先根据age降序排列，如果age有相同的信息，那么再根据id升序排序</span><br>select * from t_student order by age desc ,<span class="hljs-built_in">id</span> asc; <br><br>select * from t_student order by age desc ,<span class="hljs-built_in">id</span> desc;<br></code></pre></td></tr></table></figure>
+
+<h2 id="DCL"><a href="#DCL" class="headerlink" title="DCL"></a>DCL</h2><p>数据控制语句，用于控制不同数据段直接的许可和访问级别的语句。这些语句定义了数据库、表、字段、用户的访问权限和安全级别。主要的语句关键字包括grant、revoke 等。</p>
+<p>DCL 语句主要是DBA 用来管理系统中的对象权限时所使用，一般的开发人员很少使用。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs bash">mysql&gt; grant select,insert on plf.* to <span class="hljs-string">&#x27;plf&#x27;</span>@<span class="hljs-string">&#x27;%&#x27;</span> identified by <span class="hljs-string">&#x27;123456&#x27;</span>;<br>Query OK, 0 rows affected (0.00 sec)<br>mysql&gt; flush privileges;<br>Query OK, 0 rows affected (0.00 sec)<br><br><br>mysql&gt; revoke insert on plf.* from <span class="hljs-string">&#x27;plf&#x27;</span>@<span class="hljs-string">&#x27;%&#x27;</span>;<br>Query OK, 0 rows affected (0.00 sec)<br></code></pre></td></tr></table></figure>
+
+
+
+<h1 id="sql查询语句"><a href="#sql查询语句" class="headerlink" title="sql查询语句"></a>sql查询语句</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs bash">select classid,count(*) from 数量 from students group by classid <span class="hljs-built_in">limit</span> 3;<br><br>select * from students order by age desc <span class="hljs-built_in">limit</span> 3<br><br>select classid,avg(age) as 平均年龄 from sutdents <span class="hljs-built_in">where</span> classid &gt; 3 group by classid having 平均年龄 &gt; 30 ;<br><br>select gender,avg(age) 平均年龄 from students group by gender having gender=<span class="hljs-string">&#x27;M&#x27;</span>;<br><br>select * from students order by name desc <span class="hljs-built_in">limit</span> 2;<br><br>select * from students order by name desc <span class="hljs-built_in">limit</span> 1,7;<br><br>select classid,<span class="hljs-built_in">sum</span>(age) from students group by classid  having classid is not null order by classid;<br><br>select gender,group_concat(name) from students group by gender <span class="hljs-built_in">limit</span> 0,5;<br><br>select classid,count(*) 数量  from students group by classid order by 数量;<br><br>select gender,classid,avg(age) from students <span class="hljs-built_in">where</span> classid is not null group by gender,classid order by gender,classid;<br></code></pre></td></tr></table></figure>
+
+
+
+<h1 id="xtrabackup备份和还原数据库"><a href="#xtrabackup备份和还原数据库" class="headerlink" title="xtrabackup备份和还原数据库"></a>xtrabackup备份和还原数据库</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><code class="hljs bash">1、备份过程：<br><span class="hljs-comment">#先安装xtrabackup包</span><br>yum -y install percona-xtrabackup-80-8.0.23-1.el8.x86_64.rpm<br><span class="hljs-comment">#在原主机做完全备份到/backup</span><br><span class="hljs-built_in">mkdir</span> /backup<br>xtrabackup -uroot --backup --target-dir=/backup/base<br><br><span class="hljs-comment">#第一次修改数据</span><br><span class="hljs-comment">#第一次增量备份</span><br>xtrabackup -uroot -pmagedu --backup --target-dir=/backup/inc1 --<br>incremental-basedir=/backup/base<br><br><span class="hljs-comment">#第二次修改数据</span><br><span class="hljs-comment">#第二次增量备份</span><br>xtrabackup -uroot -pmagedu --backup --target-dir=/backup/inc2 --<br>incremental-basedir=/backup/inc1<br><br><span class="hljs-comment">#备份到远程主机</span><br>scp -r /backup/* 192.168.50.3:/backup/<br><br>2、还原过程：<br><span class="hljs-comment">#预准备完成备份，此选项--apply-log-only   阻止回滚未完成的事务</span><br>xtrabackup --prepare --apply-log-only --target-dir=/backup/base<br><span class="hljs-comment">#合并第1次增量备份到完全备份</span><br>xtrabackup --prepare --apply-log-only --target-dir=/backup/base <br>--incremental-dir=/backup/inc1<br><span class="hljs-comment">#合并第2次增量备份到完全备份，最后一次还原不需要加选项--apply-log-only</span><br>xtrabackup --prepare --target-dir=/backup/base --incremental-dir=/backup/inc2<br><br><span class="hljs-comment">#复制到数据库目录，注意数据库目录必须为空，mysql服务不能启动</span><br>xtrabackup --copy-back --target-dir=/backup/base<br><span class="hljs-comment">#还原属性</span><br><span class="hljs-built_in">chown</span> -R mysql:mysql /var/lib/mysql<br><span class="hljs-comment">#启动服务</span><br>service mysqld start<br></code></pre></td></tr></table></figure>
+
+
+
+<h1 id="mysql主从复制，主主复制和半同步复制"><a href="#mysql主从复制，主主复制和半同步复制" class="headerlink" title="mysql主从复制，主主复制和半同步复制"></a>mysql主从复制，主主复制和半同步复制</h1><h2 id="主从复制"><a href="#主从复制" class="headerlink" title="主从复制"></a>主从复制</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><code class="hljs bash"><br><span class="hljs-comment">#修改master主节点的配置</span><br>vim /etc/my.cnf<br><br>[mysqld]<br>server-id=1<br>log-bin=/data/mysql/logbin/mysql-bin<br><br>systemctl restart mysqld<br><br><span class="hljs-comment">#完全备份</span><br>mysqldump -A -F --master-data=1 --single-transaction &gt;data/all.sql<br><br><span class="hljs-comment">#创建复制用户并授权</span><br>mysql<br>create user repluser@<span class="hljs-string">&#x27;192.168.50.%&#x27;</span> identified by <span class="hljs-string">&#x27;123456&#x27;</span>;<br>grant replication slave on *.* to repluser@<span class="hljs-string">&#x27;192.168.50.%&#x27;</span>;<br><br><span class="hljs-comment">#将备份复制到从节点</span><br>scp /data/all.sql 192.168.50.3:/data<br><br><span class="hljs-comment">#配置从节点</span><br>vim /etc/my.cnf<br>[mysqld]<br>server-id=2<br>read-only<br><br>systemctl restart mysqld<br><br><span class="hljs-comment">#从节点修改备份文件</span><br>vim /data/all.sql<br><br>CHANGE MASTER TO<br>  MASTER_HOST=<span class="hljs-string">&#x27;主节点&#x27;</span>,<br>  MASTER_USER=<span class="hljs-string">&#x27;repluser&#x27;</span>,<br>  MASTER_PASSWORD=<span class="hljs-string">&#x27;123456&#x27;</span>,<br>  MASTER_PORT=3306,<br>MASTER_LOG_FILE=<span class="hljs-string">&#x27;mysql-bin.000002&#x27;</span>, MASTER_LOG_POS=156;    <span class="hljs-comment">#这个数字需要查看主节点二进制文件日志</span><br><br><span class="hljs-comment">#从节点还原备份</span><br><span class="hljs-built_in">set</span> sql_log_bin=0;<br><span class="hljs-built_in">source</span> /data/all.sql;<br><span class="hljs-built_in">set</span> sql_log_bin=1;<br><br><span class="hljs-comment">#从节点开始复制</span><br>start slave;<br></code></pre></td></tr></table></figure>
+
+<h2 id="实现两个节点的主主复制"><a href="#实现两个节点的主主复制" class="headerlink" title="实现两个节点的主主复制"></a>实现两个节点的主主复制</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><code class="hljs bash"><br><span class="hljs-comment">#在第一个master节点上实现</span><br>vim /etc/my.cnf.d/mysql-server.cnf<br>[mysqld]<br>server-id=1<br>log-bin<br>auto_increment_offset=1<br>auto_increment_increment=2<br><br>systemctl restart mysqld<br><br><br><span class="hljs-comment">#在第二个节点上实现</span><br>vim /etc/my.cnf.d/mysql-server.cnf<br>[mysqld]<br>server-id=2<br>log-bin<br>auto_increment_offset=2<br>auto_increment_increment=2<br><br>systemctl restart mysqld<br>mysql<br>CHANGE MASTER TO<br>    -&gt;   MASTER_HOST=<span class="hljs-string">&#x27;192.168.50.200&#x27;</span>,<br>    -&gt;   MASTER_USER=<span class="hljs-string">&#x27;repluser&#x27;</span>,<br>    -&gt;   MASTER_PASSWORD=<span class="hljs-string">&#x27;123456&#x27;</span>,<br>    -&gt;   MASTER_PORT=3306,<br>    -&gt;   MASTER_LOG_FILE=<span class="hljs-string">&#x27;mariadb-bin.000002&#x27;</span>,<br>    -&gt;   MASTER_LOG_POS=386;    <span class="hljs-comment">#此数字需要查第一个节点日志</span><br>start slave;<br><br><br><span class="hljs-comment">#在第一个master上实现</span><br>mysql<br>CHANGE MASTER TO<br>    -&gt;   MASTER_HOST=<span class="hljs-string">&#x27;192.168.50.3&#x27;</span>,<br>    -&gt;   MASTER_USER=<span class="hljs-string">&#x27;repluser&#x27;</span>,<br>    -&gt;   MASTER_PASSWORD=<span class="hljs-string">&#x27;123456&#x27;</span>,<br>    -&gt;   MASTER_PORT=3306,<br>    -&gt;   MASTER_LOG_FILE=<span class="hljs-string">&#x27;mariadb-bin.000002&#x27;</span>,<br>    -&gt;   MASTER_LOG_POS=344;      <span class="hljs-comment">#此数字需要查第二个节点日志</span><br>start slave;<br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="半同步复制"><a href="#半同步复制" class="headerlink" title="半同步复制"></a>半同步复制</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment">#master服务器配置</span><br>vim /etc/my.cnf.d/mysql-server.cnf<br>[mysqld]<br>server-id=1<br>log-bin<br>rpl_semi_sync_master_enabled=ON<br>rpl_semi_sync_master_timeout=3000<br><br><span class="hljs-comment">#slave1服务器配置</span><br>vim /etc/my.cnf.d/mysql-server.cnf<br>[mysqld]<br>server-id=2<br>rpl_semi_sync_slave_enabled=ON<br><br><span class="hljs-comment">#slave2服务器配置</span><br>vim /etc/my.cnf.d/mysql-server.cnf<br>[mysqld]<br>server-id=3<br>rpl_semi_sync_slave_enabled=ON<br><br><br>主服务器配置<br>mysql<br>INSTALL PLUGIN rpl_semi_sync_master SONAME <span class="hljs-string">&#x27;semisync_master.so&#x27;</span>;<br>SET GLOBAL rpl_semi_sync_master_enabled=1<br>SET GLOBAL rpl_semi_sync_master_timeout = 3000;<br><br><span class="hljs-comment">#从服务器配置</span><br>mysql<br>INSTALL PLUGIN rpl_semi_sync_slave SONAME <span class="hljs-string">&#x27;semisync_slave.so&#x27;</span>;<br>SET GLOBAL rpl_semi_sync_slave_enabled=1;<br>stop slave;<br>start slave;<br></code></pre></td></tr></table></figure>
+
+
+
+<h1 id="mycat实现mysql的读写分离"><a href="#mycat实现mysql的读写分离" class="headerlink" title="mycat实现mysql的读写分离"></a>mycat实现mysql的读写分离</h1><h2 id="修改master和slave上的配置文件"><a href="#修改master和slave上的配置文件" class="headerlink" title="修改master和slave上的配置文件"></a>修改master和slave上的配置文件</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><code class="hljs bash">1、修改master和slave上的配置文件<br><span class="hljs-comment">#修改master上的my.cnf</span><br>vim /etc/my.cnf.d/mariadb-server.cnf<br>[mysqld]<br>server-id=1<br>log-bin<br><br><span class="hljs-comment">#修改slave上的my.cnf</span><br>[mysqld]<br>server-id=2<br><br><br>2、master上创建复制用户<br>mysql -uroot<br>grant replication slave on *.* to <span class="hljs-string">&#x27;repluser&#x27;</span>@<span class="hljs-string">&#x27;192.168.50.%&#x27;</span> identified by <span class="hljs-string">&#x27;123456&#x27;</span> ;<br>flush privileges;<br>show master status;<br><br>3、slaver 上执行<br>mysql -uroot<br>change master to<br>-&gt;     MASTER_HOST=<span class="hljs-string">&#x27;192.168.50.200&#x27;</span>,<br>-&gt;     MASTER_USER=<span class="hljs-string">&#x27;repluser&#x27;</span>,<br>-&gt;     MASTER_PASSWORD=<span class="hljs-string">&#x27;123456&#x27;</span>,<br>-&gt;     MASTER_LOG_FILE=<span class="hljs-string">&#x27;mariadb-bin.000001&#x27;</span>,<br>-&gt;     MASTER_LOG_POS=856;<br><br>start slave<br><br>show slave status\G<br><br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="在mysql代理服务器上安装mycat并启动"><a href="#在mysql代理服务器上安装mycat并启动" class="headerlink" title="在mysql代理服务器上安装mycat并启动"></a>在mysql代理服务器上安装mycat并启动</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs bash"><br>yum -y install java<br>wget http://dl.mycat.org.cn/1.6.7.6/20210303094759/Mycat-server-<br>1.6.7.6-release-20210303094759-linux.tar.gz<br>wget http://dl.mycat.org.cn/1.6.7.4/Mycat-server-1.6.7.4-release/Mycat-server-<br>1.6.7.4-release-20200105164103-linux.tar.gz<br><br><span class="hljs-built_in">mkdir</span> /apps<br>tar xvf Mycat-server-1.6.7.6-release-20210303094759-linux.tar.gz <br>-C /apps/<br>tar xvf Mycat-server-1.6.7.4-release-20200105164103-linux.tar.gz -C /apps<br><br><span class="hljs-built_in">echo</span> <span class="hljs-string">&#x27;PATH=/apps/mycat/bin:$PATH&#x27;</span> &gt; /etc/profile.d/mycat.sh<br><span class="hljs-built_in">source</span> /etc/profile.d/mycat.sh<br><br><span class="hljs-comment">#启动mycat</span><br>file /apps/mycat/bin/mycat<br>mycat start<br>ss -ntl<br></code></pre></td></tr></table></figure>
+
+
+
+<ul>
+<li>使用默认密码123456来连接mycat</li>
+</ul>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-attribute">mysql</span> -uroot -p123456 -h <span class="hljs-number">192.168.50.131</span> -P8066<br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="在mycat服务器上修改server-xml文件配置mycat的连接信息"><a href="#在mycat服务器上修改server-xml文件配置mycat的连接信息" class="headerlink" title="在mycat服务器上修改server.xml文件配置mycat的连接信息"></a>在mycat服务器上修改server.xml文件配置mycat的连接信息</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash">vim /apps/mycat/conf/server.xml<br><br><span class="hljs-comment">#重新插入</span><br>&lt;property name=<span class="hljs-string">&quot;serverPort&quot;</span>&gt;3306&lt;/property&gt;<br>&lt;property name=<span class="hljs-string">&quot;handlelDistributedTransactions&quot;</span>&gt;0&lt;/property&gt;<br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="修改schema-xml实现读写分离策略"><a href="#修改schema-xml实现读写分离策略" class="headerlink" title="修改schema.xml实现读写分离策略"></a>修改schema.xml实现读写分离策略</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs bash">vim /apps/mycat/conf/schema.xml<br><br>&lt;?xml version=<span class="hljs-string">&quot;1.0&quot;</span>?&gt;<br>&lt;!DOCTYPE mycat:schema SYSTEM <span class="hljs-string">&quot;schema.dtd&quot;</span>&gt;<br>&lt;mycat:schema xmlns:mycat=<span class="hljs-string">&quot;http://io.mycat/&quot;</span>&gt;<br> &lt;schema name=<span class="hljs-string">&quot;TESTDB&quot;</span> checkSQLschema=<span class="hljs-string">&quot;false&quot;</span> sqlMaxLimit=<span class="hljs-string">&quot;100&quot;</span><br>dataNode=<span class="hljs-string">&quot;dn1&quot;</span>&gt;<br> &lt;/schema&gt;<br> &lt;dataNode name=<span class="hljs-string">&quot;dn1&quot;</span> dataHost=<span class="hljs-string">&quot;localhost1&quot;</span> database=<span class="hljs-string">&quot;hellodb&quot;</span> /&gt;<br> &lt;dataHost name=<span class="hljs-string">&quot;localhost1&quot;</span> maxCon=<span class="hljs-string">&quot;1000&quot;</span> minCon=<span class="hljs-string">&quot;10&quot;</span> balance=<span class="hljs-string">&quot;1&quot;</span><br>  writeType=<span class="hljs-string">&quot;0&quot;</span> dbType=<span class="hljs-string">&quot;mysql&quot;</span> dbDriver=<span class="hljs-string">&quot;native&quot;</span> switchType=<span class="hljs-string">&quot;1&quot;</span><br>slaveThreshold=<span class="hljs-string">&quot;100&quot;</span>&gt;<br> &lt;heartbeat&gt;select user()&lt;/heartbeat&gt;<br> &lt;writeHost host=<span class="hljs-string">&quot;host1&quot;</span> url=<span class="hljs-string">&quot;192.168.50.200:3306&quot;</span> user=<span class="hljs-string">&quot;root&quot;</span><br>   password=<span class="hljs-string">&quot;123456&quot;</span>&gt;<br>         &lt;readHost host=<span class="hljs-string">&quot;host2&quot;</span> url=<span class="hljs-string">&quot;192.168.50.3:3306&quot;</span> user=<span class="hljs-string">&quot;root&quot;</span><br>password=<span class="hljs-string">&quot;123456&quot;</span> /&gt;<br> &lt;/writeHost&gt;<br>   &lt;/dataHost&gt;<br>&lt;/mycat:schema&gt;<br><br><br><br><span class="hljs-comment">#重新启动mycat</span><br>mycat restart<br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="在后端主服务器创建用户并对mycat授权"><a href="#在后端主服务器创建用户并对mycat授权" class="headerlink" title="在后端主服务器创建用户并对mycat授权"></a>在后端主服务器创建用户并对mycat授权</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash"><br>mysql -uroot<br>create databses mycat ;<br>grant all on *.* to <span class="hljs-string">&#x27;root&#x27;</span>@192.168.50.%<span class="hljs-string">&#x27; identified by &#x27;</span>123456<span class="hljs-string">&#x27;;</span><br><span class="hljs-string">flush privileges;</span><br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="通过通用日志确认实现读写分离"><a href="#通过通用日志确认实现读写分离" class="headerlink" title="通过通用日志确认实现读写分离"></a>通过通用日志确认实现读写分离</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs bash"><br><span class="hljs-comment">#在mysql中查看通用日志</span><br><span class="hljs-built_in">set</span> global general_log=on;<br><br><span class="hljs-comment">#在主和从服务器分别启用通用日志，查看读写分离</span><br>vim /etc/my.cnf.d/mysql-server.cnf<br><br>[mysqld]<br>general_log=ON<br></code></pre></td></tr></table></figure>
+
+
+
+<h1 id="openvpn"><a href="#openvpn" class="headerlink" title="openvpn"></a>openvpn</h1><h2 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs bash">服务器系统：CentOS Linux release 7.9.2009 (Core)<br>服务器配置：不重要<br>服务器IP：<br>	Openvpn服务器：<br>		外网：124.70.49.106<br>		内网：192.168.0.155<br>	内网测试服务器：192.168.0.21<br>	openvpn客户端服务器网段：172.16.16.0/24<br>OpenVpn版本：2.5.6<br>easy-rsa版本：3.0.8<br><br>安装包存放的路径：/tmp/install/<br>程序安装目录：/data/openvpn<br><br>备注：<br>	root<span class="hljs-comment"># 代表在root用户下执行的命令</span><br>	$ 代表是在普通用户下执行的命令<br>	<span class="hljs-comment"># 单个#号代表注释</span><br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="安装步骤"><a href="#安装步骤" class="headerlink" title="安装步骤"></a>安装步骤</h2><h3 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs bash">（以下所有操作均在Openvpn服务器操作）<br><span class="hljs-comment"># 关闭防火墙</span><br>	root<span class="hljs-comment"># systemctl stop firewalld</span><br>	root<span class="hljs-comment"># systemctl disable firewalld</span><br><br><span class="hljs-comment"># 关闭selinux</span><br>	root<span class="hljs-comment"># sed -i &#x27;s/enforcing/disabled/&#x27; /etc/selinux/config</span><br>	root<span class="hljs-comment"># setenforce 0</span><br>	<br><span class="hljs-comment"># 安装依赖</span><br>	root<span class="hljs-comment"># yum install -y  vim wget lrzsz gcc-c++ openssl openssl-devel net-tools lzo lzo-devel pam pam-devel </span><br><br><span class="hljs-comment"># 下载安装包</span><br>	root<span class="hljs-comment"># mkdir /tmp/install</span><br>	root<span class="hljs-comment"># cd /tmp/install</span><br>	root<span class="hljs-comment"># wget https://swupdate.openvpn.org/community/releases/openvpn-2.5.6.tar.gz</span><br>	root<span class="hljs-comment"># wget https://github.com/OpenVPN/easy-rsa/releases/download/v3.0.8/EasyRSA-3.0.8.tgz</span><br><br></code></pre></td></tr></table></figure>
+
+<h3 id="安装OpenVpn和EasyRSA"><a href="#安装OpenVpn和EasyRSA" class="headerlink" title="安装OpenVpn和EasyRSA"></a>安装OpenVpn和EasyRSA</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment">#1）安装OpenVpn</span><br>root<span class="hljs-comment"># cd /tmp/install</span><br><br><span class="hljs-comment">#创建目录</span><br>root<span class="hljs-comment"># mkdir /data</span><br><br><span class="hljs-comment">#解压缩</span><br>root<span class="hljs-comment"># tar -zxvf openvpn-2.5.6.tar.gz</span><br><br>root<span class="hljs-comment"># cd openvpn-2.5.6</span><br><br><span class="hljs-comment">#--prefix= 后面路径是安装openvpn到那个文件路径下</span><br>root<span class="hljs-comment"># ./configure --prefix=/data/openvpn/</span><br><br><span class="hljs-comment">#编译</span><br>root<span class="hljs-comment"># make &amp;&amp; make install</span><br><br><span class="hljs-comment">#添加openvpn的环境变量</span><br>root<span class="hljs-comment"># echo -e &quot;PATH=\$PATH:/data/openvpn/sbin&quot; &gt;/etc/profile.d/openvpn256.sh</span><br><br><span class="hljs-comment">#加载环境变量</span><br>root<span class="hljs-comment"># source /etc/profile</span><br><br><span class="hljs-comment">#执行下面的命令看看是否成功，出现以下内容表示成功</span><br>root<span class="hljs-comment"># openvpn --version</span><br>OpenVPN 2.5.6 x86_64-pc-linux-gnu [SSL (OpenSSL)] [LZO] [LZ4] [EPOLL] [MH/PKTINFO] [AEAD] built on May  5 2022<br><br><span class="hljs-comment">#2）安装EasyRSA</span><br>root<span class="hljs-comment"># cd /tmp/install</span><br>root<span class="hljs-comment"># tar -zxvf EasyRSA-3.0.8.tgz</span><br>root<span class="hljs-comment"># mv EasyRSA-3.0.8 /data/EasyRSA</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="服务端配置"><a href="#服务端配置" class="headerlink" title="服务端配置"></a>服务端配置</h2><h3 id="准备CA签发机构环境"><a href="#准备CA签发机构环境" class="headerlink" title="准备CA签发机构环境"></a>准备CA签发机构环境</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment">#拷贝EasyRSA</span><br>root<span class="hljs-comment"># cp -r  /data/EasyRSA /data/openvpn/easy-rsa-server</span><br>root<span class="hljs-comment"># cd /data/openvpn/easy-rsa-server</span><br><br><span class="hljs-comment">#准备签发证书的默认变量文件</span><br>root<span class="hljs-comment"># egrep -v &quot;^$|^#&quot; vars.example &gt;vars</span><br><br><span class="hljs-comment">#编辑vars文件，在最后一行增加以下内容</span><br>root<span class="hljs-comment"># vim vars</span><br><span class="hljs-comment">#添加参数，设置CA证书有效期为100年（日期可以你自己决定设置多长）</span><br>set_var EASYRSA_CA_EXPIRE 36500<br><span class="hljs-comment">#添加参数，设置服务器证书为10年</span><br>set_var EASYRSA_CERT_EXPIRE 3650<br></code></pre></td></tr></table></figure>
+
+<h3 id="创建CA机构与服务器证书"><a href="#创建CA机构与服务器证书" class="headerlink" title="创建CA机构与服务器证书"></a>创建CA机构与服务器证书</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment">#1）创建CA机构</span><br>root<span class="hljs-comment"># cd /data/openvpn/easy-rsa-server</span><br><br><span class="hljs-comment">#初始化，执行此命令会生成pki目录</span><br>root<span class="hljs-comment"># ./easyrsa init-pki</span><br><br><span class="hljs-comment">#创建CA机构,nopass代表不需要密码的意思</span><br>root<span class="hljs-comment"># ./easyrsa build-ca nopass</span><br>	<span class="hljs-comment">#这里是CA机构的名称，我这边使用的是CATEST，这个名字可以用默认的也可以你自己输入</span><br>	Common Name (eg: your user, host, or server name) [Easy-RSA CA]: CATEST<br>	<span class="hljs-comment">#执行创建ca机构成功的话，会出现下面的这个ca.crt文件</span><br>	Your new CA certificate file <span class="hljs-keyword">for</span> publishing is at:<br>/data/openvpn/easy-rsa-server/pki/ca.crt<br><br><span class="hljs-comment">#CA证书文件</span><br>root<span class="hljs-comment">#  ls -l  /data/openvpn/easy-rsa-server/pki/ca.crt</span><br>-rw------- 1 root root 1151 May  5 09:56 /data/openvpn/easy-rsa-server/pki/ca.crt<br><br><span class="hljs-comment">#CA秘钥文件</span><br>root<span class="hljs-comment">#  ls -l  /data/openvpn/easy-rsa-server/pki/private/ca.key</span><br>-rw------- 1 root root 1679 May  5 09:56 /data/openvpn/easy-rsa-server/pki/private/ca.key<br><br><span class="hljs-comment">#2）创建服务端证书</span><br>root<span class="hljs-comment"># cd /data/openvpn/easy-rsa-server</span><br><br><span class="hljs-comment">#创建服务端证书申请文件，openvpnserver为了区别参数标识，我这里设置为openvpnserver，如果你自己安装的话可以使用默认的server 这个名称</span><br>root<span class="hljs-comment"># ./easyrsa gen-req openvpnserver nopass</span><br>	<span class="hljs-comment">#默认回车就行</span><br>	Common Name (eg: your user, host, or server name) [openvpnserver]:<br>	Keypair and certificate request completed. Your files are:<br>	<span class="hljs-comment">#请求文件</span><br>	req: /data/openvpn/easy-rsa-server/pki/reqs/openvpnserver.req<br>	<span class="hljs-comment">#私钥文件</span><br>	key: /data/openvpn/easy-rsa-server/pki/private/openvpnserver.key<br><br><span class="hljs-comment">#3）签发服务端证书</span><br>root<span class="hljs-comment"># cd /data/openvpn/easy-rsa-server</span><br><br><span class="hljs-comment">#这里的server是代表服务端意思，openvpnserver这个是上面我们创建的服务端证书的名称</span><br>root<span class="hljs-comment"># ./easyrsa sign server openvpnserver</span><br>	<span class="hljs-comment">#输入yes</span><br>	Type the word <span class="hljs-string">&#x27;yes&#x27;</span> to <span class="hljs-built_in">continue</span>, or any other input to abort.<br>  Confirm request details: <span class="hljs-built_in">yes</span><br>  	<span class="hljs-comment">#服务端的证书文件</span><br>	Certificate created at: /data/openvpn/easy-rsa-server/pki/issued/openvpnserver.crt<br><br><span class="hljs-comment">#4）创建交互秘钥</span><br>root<span class="hljs-comment"># cd /data/openvpn/easy-rsa-server</span><br><br>root<span class="hljs-comment"># ./easyrsa gen-dh</span><br>	DH parameters of size 2048 created at /data/openvpn/easy-rsa-server/pki/dh.pem<br><br><span class="hljs-comment">#5） 启用安全增强配置</span><br>root<span class="hljs-comment"># cd /data/openvpn/easy-rsa-server</span><br>root<span class="hljs-comment"># openvpn --genkey tls-auth ta.key</span><br><br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="OpenVPN服务端配置"><a href="#OpenVPN服务端配置" class="headerlink" title="OpenVPN服务端配置"></a>OpenVPN服务端配置</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment">#创建openvpn用户</span><br>root<span class="hljs-comment"># groupadd openvpn</span><br>root<span class="hljs-comment"># useradd -M -s /sbin/nologin -g openvpn openvpn</span><br><br><span class="hljs-comment"># 创建证书存放目录</span><br>root<span class="hljs-comment"># mkdir /data/openvpn/certificate</span><br><br><span class="hljs-comment"># 创建日志存放目录</span><br>root<span class="hljs-comment"># mkdir /data/openvpn/logs</span><br>root<span class="hljs-comment"># chown openvpn.  /data/openvpn/logs</span><br><br><br><span class="hljs-comment"># 将服务端证书秘钥和交互秘钥复制到certificate目录</span><br>root<span class="hljs-comment"># cp /data/openvpn/easy-rsa-server/pki/ca.crt /data/openvpn/certificate/</span><br>root<span class="hljs-comment"># cp /data/openvpn/easy-rsa-server/pki/issued/openvpnserver.crt  /data/openvpn/certificate/</span><br>root<span class="hljs-comment"># cp /data/openvpn/easy-rsa-server/pki/private/openvpnserver.key  /data/openvpn/certificate/</span><br>root<span class="hljs-comment"># cp /data/openvpn/easy-rsa-server/pki/dh.pem  /data/openvpn/certificate/</span><br>root<span class="hljs-comment"># cp /data/openvpn/easy-rsa-server/ta.key  /data/openvpn/certificate/</span><br><br><span class="hljs-comment">#添加配置文件</span><br>root<span class="hljs-comment"># cd /data/openvpn/</span><br>root<span class="hljs-comment"># vim /data/openvpn/server.conf</span><br><span class="hljs-comment">#__server.conf—stat___</span><br><span class="hljs-comment">#端口</span><br>port 1194<br><span class="hljs-comment">#协议</span><br>proto tcp<br>dev tun<br><span class="hljs-comment">#ca证书文件</span><br>ca /data/openvpn/certificate/ca.crt<br><span class="hljs-comment">#服务端证书文件</span><br>cert /data/openvpn/certificate/openvpnserver.crt<br><span class="hljs-comment">#服务端私钥文件</span><br>key /data/openvpn/certificate/openvpnserver.key<br><span class="hljs-comment">#交换秘钥文件</span><br>dh /data/openvpn/certificate/dh.pem<br><span class="hljs-comment">#安全增强文件，0是服务端，1是客户端</span><br>tls-auth /data/openvpn/certificate/ta.key 0<br><span class="hljs-comment">#分配客户端IP的网段，不能和服务器一个网段，不能冲突</span><br>server 10.8.0.0 255.255.255.0<br><span class="hljs-comment">#运行通讯的内网路由，可以多条</span><br>push <span class="hljs-string">&quot;route 192.168.0.0 255.255.255.0&quot;</span><br><span class="hljs-comment">#会话检测，每十秒测试一下，超过120秒没回应就认为对方down</span><br>keepalive 10 120<br><span class="hljs-comment">#加密算法</span><br>cipher AES-256-CBC<br><span class="hljs-comment">#压缩算法</span><br>compress lz4-v2<br><span class="hljs-comment">#推送客户端使用lz4-v2算法</span><br>push <span class="hljs-string">&quot;compress lz4-v2&quot;</span><br><span class="hljs-comment">#最大客户端数</span><br>max-clients 100<br><span class="hljs-comment">#运行openvpn的用户和用户组</span><br>user openvpn<br>group openvpn<br><span class="hljs-comment">#状态日志</span><br>status  /data/openvpn/logs/openvpn-status.log<br>log-append /data/openvpn/logs/openvpn.log<br><span class="hljs-comment">#日志级别</span><br>verb 3<br>mute 20<br><span class="hljs-comment">#__server.conf—end___</span><br><br><br><span class="hljs-comment">#内核转发规则</span><br>root<span class="hljs-comment"># echo &quot;net.ipv4.ip_forward=1&quot; &gt;&gt;/etc/sysctl.conf</span><br>root<span class="hljs-comment"># sysctl -p</span><br><br><span class="hljs-comment">#iptablesNAT规则 </span><br><span class="hljs-comment">#这里的ip就是server.conf 中的server 10.8.0.0 255.255.255.0 ;添加转发规则到开机启动项</span><br>root<span class="hljs-comment"># echo &#x27;iptables -t nat -A POSTROUTING -s 10.8.0.0/24 -j MASQUERADE&#x27; &gt;&gt; /etc/rc.d/rc.local</span><br>root<span class="hljs-comment"># chmod +x /etc/rc.d/rc.local</span><br>root<span class="hljs-comment"># /etc/rc.d/rc.local</span><br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="启动OpenVPN"><a href="#启动OpenVPN" class="headerlink" title="启动OpenVPN"></a>启动OpenVPN</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 创建启动文件</span><br>root<span class="hljs-comment"># vim /etc/systemd/system/openvpn.service</span><br>[Unit]<br>Description=OpenVPN Server<br>After=network.target<br>After=syslog.target<br><br>[Install]<br>WantedBy=multi-user.target<br><br>[Service]<br>ExecStart=/data/openvpn/sbin/openvpn --config /data/openvpn/server.conf<br><br><br><span class="hljs-comment">#加载系统服务</span><br>root<span class="hljs-comment"># systemctl daemon-reload</span><br><span class="hljs-comment">#开机启动</span><br>root<span class="hljs-comment"># systemctl enable openvpn.service</span><br><span class="hljs-comment">#启动服务</span><br>root<span class="hljs-comment"># systemctl start openvpn.service</span><br><span class="hljs-comment">#查看服务运行状态</span><br>root<span class="hljs-comment"># systemctl status openvpn.service</span><br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="客户端文件配置"><a href="#客户端文件配置" class="headerlink" title="客户端文件配置"></a>客户端文件配置</h2><h3 id="准备客户端证书"><a href="#准备客户端证书" class="headerlink" title="准备客户端证书"></a>准备客户端证书</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment">#1）创建客户端申请证书</span><br>root<span class="hljs-comment"># cp -r  /data/EasyRSA /data/openvpn/easy-rsa-client</span><br>root<span class="hljs-comment"># cd  /data/openvpn/easy-rsa-client</span><br><span class="hljs-comment">#初始化，执行此命令会生成pki目录</span><br>root<span class="hljs-comment"># ./easyrsa init-pki</span><br><span class="hljs-comment">#创建客户端申请证书,我这里用的是名字全拼</span><br>root<span class="hljs-comment"># ./easyrsa gen-req zhangsan nopass</span><br>	<span class="hljs-comment">#直接回车就行</span><br>	Common Name (eg: your user, host, or server name) [zhangsan]:<br>    req: /data/openvpn/easy-rsa-client/pki/reqs/zhangsan.req<br>    key: /data/openvpn/easy-rsa-client/pki/private/zhangsan.key<br><br><span class="hljs-comment">#2）服务端签发证书</span><br>root<span class="hljs-comment"># cd /data/openvpn/easy-rsa-server</span><br><span class="hljs-comment">#将客户端证书复制到CA工作目录</span><br>root<span class="hljs-comment"># ./easyrsa import-req /data/openvpn/easy-rsa-client/pki/reqs/zhangsan.req zhangsan</span><br><span class="hljs-comment">#设置客户端证书有效期，我这里设置的是90天</span><br>root<span class="hljs-comment"># sed -i &quot;s/set_var EASYRSA_CERT_EXPIRE.*$/set_var EASYRSA_CERT_EXPIRE\t90/g&quot; ./vars</span><br><span class="hljs-comment">#签发证书</span><br>root<span class="hljs-comment"># ./easyrsa sign client zhangsan</span><br>	<span class="hljs-comment">#输入yes</span><br>	Type the word <span class="hljs-string">&#x27;yes&#x27;</span> to <span class="hljs-built_in">continue</span>, or any other input to abort.<br>  Confirm request details:<span class="hljs-built_in">yes</span><br>  <span class="hljs-comment">#生成的证书</span><br>  Certificate created at: /data/openvpn/easy-rsa-server/pki/issued/zhangsan.crt<br><br></code></pre></td></tr></table></figure>
+
+<h3 id="准备客户端配置文件"><a href="#准备客户端配置文件" class="headerlink" title="准备客户端配置文件"></a>准备客户端配置文件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment">#创建存放目录</span><br>root<span class="hljs-comment"># mkdir /data/openvpn/client/</span><br><span class="hljs-comment">#创建张三证书存放的目录</span><br>root<span class="hljs-comment"># mkdir /data/openvpn/client/zhangsan</span><br><span class="hljs-comment">#复制证书</span><br>root<span class="hljs-comment"># find /data/openvpn/ \( -name &quot;zhangsan.key&quot; -o -name &quot;zhangsan.crt&quot; -o -name &quot;ca.crt&quot; -o -name &quot;ta.key&quot; \) -exec cp &#123;&#125;  /data/openvpn/client/zhangsan \;</span><br><br>root<span class="hljs-comment"># vim /data/openvpn/client/zhangsan/client.ovpn</span><br>client<br>dev tun<br>proto tcp<br>remote 124.70.49.106 1194<br>resolv-retry infinite<br>nobind<br>ca ca.crt<br>cert zhangsan.crt<br>key zhangsan.key<br>remote-cert-tls server<br>tls-auth ta.key 1<br>cipher AES-256-CBC<br>verb 3<br>compress lz4-v2<br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="将证书下载下来"><a href="#将证书下载下来" class="headerlink" title="将证书下载下来"></a>将证书下载下来</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">root<span class="hljs-comment"># cd /data/openvpn/client/</span><br>root<span class="hljs-comment"># tar -zcvf zhangsan.tar.gz zhangsan </span><br>root<span class="hljs-comment"># sz zhangsan.tar.gz</span><br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="安装包"><a href="#安装包" class="headerlink" title="安装包"></a>安装包</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs bash">官网下载地址：<br>    openvpn 服务端下载地址：<br>        https://swupdate.openvpn.org/community/releases/openvpn-2.5.6.tar.gz<br>    openvpn 客户端下载地址：<br>        https://swupdate.openvpn.org/community/releases/openvpn-install-2.4.5-I601.exe<br>    EasyRSA下载地址：<br>        https://github.com/OpenVPN/easy-rsa/releases/download/v3.0.8/EasyRSA-3.0.8.tgz<br><br></code></pre></td></tr></table></figure>
+
+
+
+<h1 id="mysql如何实现崩溃后恢复"><a href="#mysql如何实现崩溃后恢复" class="headerlink" title="mysql如何实现崩溃后恢复"></a>mysql如何实现崩溃后恢复</h1><h2 id="MySQL数据库崩溃可能是由于以下原因所导致的："><a href="#MySQL数据库崩溃可能是由于以下原因所导致的：" class="headerlink" title="MySQL数据库崩溃可能是由于以下原因所导致的："></a>MySQL数据库崩溃可能是由于以下原因所导致的：</h2><ol>
+<li>硬件故障：如电源故障、硬盘坏道等。</li>
+<li>操作系统故障：如操作系统崩溃、系统资源不足等。</li>
+<li>网络故障：如网络中断、网络延迟等。</li>
+<li>软件故障：如MySQL服务崩溃、MySQL配置错误等。</li>
+</ol>
+<h2 id="MySQL数据库恢复的方法"><a href="#MySQL数据库恢复的方法" class="headerlink" title="MySQL数据库恢复的方法"></a>MySQL数据库恢复的方法</h2><p>当MySQL数据库发生崩溃时，我们需要采取一些措施来恢复数据。下面是一些常见的MySQL数据库恢复方法：</p>
+<ol>
+<li>备份恢复：如果你有备份，可以使用备份文件来恢复数据。在MySQL崩溃后，你可以使用备份文件来恢复数据库。</li>
+<li>log日志文件来恢复数据。</li>
+<li>noDBnoDBnoDB引擎，那么可以使用MySQL的崩溃恢复机制来恢复数据。</li>
+<li>使用MyISAM引擎：MyISAM是MySQL的另一种存储引擎，它不支持事务和崩溃恢复。如果你使用的是MyISAM引擎，那么可以使用MySQL的修复命令来恢复数据。</li>
+<li>Toolkit可以用来恢复MySQL数据库。</li>
+</ol>
+<h2 id="如何预防MySQL数据库崩溃"><a href="#如何预防MySQL数据库崩溃" class="headerlink" title="如何预防MySQL数据库崩溃"></a>如何预防MySQL数据库崩溃</h2><p>当然，最好的方法是预防MySQL数据库崩溃。以下是一些预防措施：</p>
+<ol>
+<li>定期备份数据：定期备份数据是非常重要的，可以确保你有备份文件可用于恢复数据。</li>
+<li>优化MySQL配置：优化MySQL配置可以提高MySQL的性能和稳定性，从而减少MySQL崩溃的可能性。</li>
+<li>使用监控工具：使用监控工具可以实时监测MySQL的状态，及时发现问题并采取措施。</li>
+<li>使用合适的存储引擎：选择合适的存储引擎可以提高MySQL的性能和稳定性，从而减少MySQL崩溃的可能性。</li>
+</ol>
+<h1 id="myisam和innodb"><a href="#myisam和innodb" class="headerlink" title="myisam和innodb"></a>myisam和innodb</h1><p><strong>InnoDB和MyISAM对比</strong></p>
+<ol>
+<li>事务和外键<ul>
+<li>InnoDB支持事务和外键，具有安全性和完整性，适合大量insert或update操作</li>
+<li>MyISAM不支持事务和外键，它提供高速存储和检索，适合大量的select查询操作</li>
+</ul>
+</li>
+<li>锁机制<ul>
+<li> InnoDB支持行级锁，锁定指定记录。基于索引来加锁实现</li>
+<li> MyISAM支持表级锁，锁定整张表</li>
+</ul>
+</li>
+<li>索引结构<ul>
+<li>InnoDB使用聚集索引（聚簇索引），索引和记录在一起存储，既缓存索引，也缓存记录</li>
+<li> MyISAM使用非聚集索引（非聚簇索引），索引和记录分开</li>
+</ul>
+</li>
+<li>并发处理能力<ul>
+<li> MyISAM使用表锁，会导致写操作并发率低，读之间并不阻塞，读写阻塞</li>
+<li> InnoDB读写阻塞可以与隔离级别有关，可以采用多版本并发控制（MVCC）来支持高并发</li>
+</ul>
+</li>
+<li>存储文件<ul>
+<li> InnoDB表对应两个文件，一个.frm表结构文件，一个.ibd数据文件, InnoDB表最大支持64TB</li>
+<li> MyISAM表对应三个文件，一个.frm表结构文件，一个MYD表数据文件，一个.MYI索引文件。从 MySQL5.0开始默认限制是256TB</li>
+</ul>
+</li>
+</ol>
+<p><strong>适用场景</strong></p>
+<ol>
+<li>MyISAM<ul>
+<li>不需要事务支持（不支持）</li>
+<li>并发相对较低（锁定机制问题）</li>
+<li>数据修改相对较少，以读为主</li>
+<li>数据一致性要求不高</li>
+</ul>
+</li>
+<li>InnoDB<ul>
+<li>需要事务支持（具有较好的事务特性）</li>
+<li>行级锁定对高并发有很好的适应能力</li>
+<li>数据更新较为频繁的场景</li>
+<li>数据一致性要求较高</li>
+<li>硬件设备内存较大，可以利用InnoDB较好的缓存能力来提高内存利用率，减少磁盘IO</li>
+</ul>
+</li>
+</ol>
+<p><strong>总结</strong></p>
+<p>两种引擎该如何选择？</p>
+<ul>
+<li><p>是否需要事务？有，InnoDB</p>
+</li>
+<li><p>是否存在并发修改？有，InnoDB</p>
+</li>
+<li><p>是否追求快速查询，且数据修改少？是，MyISAM</p>
+</li>
+<li><p>在绝大多数情况下，推荐使用InnoDB</p>
+</li>
+</ul>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2023/08/31/Linux-7/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Linux-7</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/07/12/Linux-5/">
+                        <span class="hidden-mobile">Linux_5</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

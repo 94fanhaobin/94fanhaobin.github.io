@@ -1,0 +1,473 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="GNU通用公共许可证（General Public License，GPL） ​    GNU通用公共许可证（General Public License，GPL）：目前广泛使用的开源软件许可协议之一，用户享有运行、学习、共享和修改软件的自由。GPL最初是自由软件基金会创始人Richard Stallman起草的，其版本目前已经发展到了第3版。GPL的目的是保证程序员在开源社区中所做的工作对整个世">
+<meta property="og:type" content="article">
+<meta property="og:title" content="GPL、LGPL、BSD、Apa、MIT、Mozilla 6种开源许可证的区别">
+<meta property="og:url" content="http://example.com/2023/06/03/GPL%E3%80%81LGPL%E3%80%81BSD%E3%80%81Apa%E3%80%81MIT%E3%80%81Mozilla6%E7%A7%8D%E5%BC%80%E6%BA%90%E8%AE%B8%E5%8F%AF%E7%9A%84%E5%8C%BA%E5%88%AB/index.html">
+<meta property="og:site_name" content="Linux_blog">
+<meta property="og:description" content="GNU通用公共许可证（General Public License，GPL） ​    GNU通用公共许可证（General Public License，GPL）：目前广泛使用的开源软件许可协议之一，用户享有运行、学习、共享和修改软件的自由。GPL最初是自由软件基金会创始人Richard Stallman起草的，其版本目前已经发展到了第3版。GPL的目的是保证程序员在开源社区中所做的工作对整个世">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/2023/06/03/GPL%E3%80%81LGPL%E3%80%81BSD%E3%80%81Apa%E3%80%81MIT%E3%80%81Mozilla6%E7%A7%8D%E5%BC%80%E6%BA%90%E8%AE%B8%E5%8F%AF%E7%9A%84%E5%8C%BA%E5%88%AB/GPL.png">
+<meta property="og:image" content="http://example.com/2023/06/03/GPL%E3%80%81LGPL%E3%80%81BSD%E3%80%81Apa%E3%80%81MIT%E3%80%81Mozilla6%E7%A7%8D%E5%BC%80%E6%BA%90%E8%AE%B8%E5%8F%AF%E7%9A%84%E5%8C%BA%E5%88%AB/LGPL.png">
+<meta property="og:image" content="http://example.com/2023/06/03/GPL%E3%80%81LGPL%E3%80%81BSD%E3%80%81Apa%E3%80%81MIT%E3%80%81Mozilla6%E7%A7%8D%E5%BC%80%E6%BA%90%E8%AE%B8%E5%8F%AF%E7%9A%84%E5%8C%BA%E5%88%AB/bsd.png">
+<meta property="og:image" content="http://example.com/2023/06/03/GPL%E3%80%81LGPL%E3%80%81BSD%E3%80%81Apa%E3%80%81MIT%E3%80%81Mozilla6%E7%A7%8D%E5%BC%80%E6%BA%90%E8%AE%B8%E5%8F%AF%E7%9A%84%E5%8C%BA%E5%88%AB/apache.png">
+<meta property="og:image" content="http://example.com/2023/06/03/GPL%E3%80%81LGPL%E3%80%81BSD%E3%80%81Apa%E3%80%81MIT%E3%80%81Mozilla6%E7%A7%8D%E5%BC%80%E6%BA%90%E8%AE%B8%E5%8F%AF%E7%9A%84%E5%8C%BA%E5%88%AB/MIT.png">
+<meta property="og:image" content="http://example.com/2023/06/03/GPL%E3%80%81LGPL%E3%80%81BSD%E3%80%81Apa%E3%80%81MIT%E3%80%81Mozilla6%E7%A7%8D%E5%BC%80%E6%BA%90%E8%AE%B8%E5%8F%AF%E7%9A%84%E5%8C%BA%E5%88%AB/Mozilla.png">
+<meta property="og:image" content="http://example.com/2023/06/03/GPL%E3%80%81LGPL%E3%80%81BSD%E3%80%81Apa%E3%80%81MIT%E3%80%81Mozilla6%E7%A7%8D%E5%BC%80%E6%BA%90%E8%AE%B8%E5%8F%AF%E7%9A%84%E5%8C%BA%E5%88%AB/OpenSourceProtocol.jpg">
+<meta property="article:published_time" content="2023-06-03T07:12:14.000Z">
+<meta property="article:modified_time" content="2023-06-03T08:30:19.498Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="GPL、LGPL、BSD、Apa、MIT、Mozilla">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/2023/06/03/GPL%E3%80%81LGPL%E3%80%81BSD%E3%80%81Apa%E3%80%81MIT%E3%80%81Mozilla6%E7%A7%8D%E5%BC%80%E6%BA%90%E8%AE%B8%E5%8F%AF%E7%9A%84%E5%8C%BA%E5%88%AB/GPL.png">
+  
+  
+  <title>GPL、LGPL、BSD、Apa、MIT、Mozilla 6种开源许可证的区别 - Linux_blog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hint.css@2/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Fluid</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                Archives
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                Categories
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                Tags
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                About
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="GPL、LGPL、BSD、Apa、MIT、Mozilla 6种开源许可证的区别">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2023-06-03 07:12" pubdate>
+        June 3, 2023 am
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      2.4k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      21 分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">GPL、LGPL、BSD、Apa、MIT、Mozilla 6种开源许可证的区别</h1>
+            
+            <div class="markdown-body">
+              <h1 id="GNU通用公共许可证（General-Public-License，GPL）"><a href="#GNU通用公共许可证（General-Public-License，GPL）" class="headerlink" title="GNU通用公共许可证（General Public License，GPL）"></a>GNU通用公共许可证（General Public License，GPL）</h1><p><img src="GPL.png" srcset="/img/loading.gif" lazyload alt="GPL"></p>
+<p>​    <strong>GNU通用公共许可证</strong>（General Public License，GPL）：目前广泛使用的开源软件许可协议之一，用户享有运行、学习、共享和修改软件的自由。GPL最初是自由软件基金会创始人Richard Stallman起草的，其版本目前已经发展到了第3版。GPL的目的是保证程序员在开源社区中所做的工作对整个世界是有益的，所开发的软件也是自由的，并极力避免开源软件被私有化以及被无良软件公司所剥削。</p>
+<p>​    现在，只要软件中包含了遵循GPL许可证的产品或代码，该软件就必须开源、免费，因此这个许可证并不适合商业收费软件。遵循该许可证的开源软件数量极其庞大，包括Linux内核在内的大多数的开源软件都是基于GPL许可证的。GPL赋予了用户著名的五大自由。</p>
+<p>​    使用自由：允许用户根据需要自由使用这个软件。</p>
+<p>​    复制自由：允许把软件复制到任何人的计算机中，并且不限制复制的数量。</p>
+<p>​    修改自由：允许开发人员增加或删除软件的功能，但软件修改后必须依然基于GPL许可证。</p>
+<p>​    衍生自由：允许用户深度定制化软件后，为软件注册自己的新商标，再发行衍生品的自由。</p>
+<p>​    收费自由：允许在各种媒介上出售该软件，但必须提前让买家知道这个软件是可以免费获得的。因此，一般来讲，开源软件都是通过为用户提供有偿服务的形式来营利的。</p>
+<h1 id="较宽松通用公共许可证（Lesser-GPL-LGPL）"><a href="#较宽松通用公共许可证（Lesser-GPL-LGPL）" class="headerlink" title="较宽松通用公共许可证（Lesser GPL, LGPL）"></a>较宽松通用公共许可证（Lesser GPL, LGPL）</h1><p><img src="LGPL.png" srcset="/img/loading.gif" lazyload alt="LGPL"></p>
+<p>​    <strong>较宽松通用公共许可证</strong>（Lesser GPL, LGPL）：一个主要为保护类库权益而设计的GPL开源协议。与标准GPL许可证相比，LGPL允许商业软件以类库引用的方式使用开源代码，而不用将其产品整体开源，因此普遍被商业软件用来引用类库代码。简单来说，就是针对使用了基于LGPL许可证的开源代码，在涉及这部分代码，以及修改过或者衍生出来的代码时，都必须继续采用LGPL协议，除此以外的其他代码则不强制要求。</p>
+<p>​    如果您觉得LGPL许可证更多地是关注对类库文件的保护，而不是软件整体，那就对了。因为该许可证最早的名字是Library GPL，即GPL类库开源许可证，保护的对象有glibc、GTK widget toolkit等类库文件。</p>
+<h1 id="伯克利软件发布版（Berkeley-Software-Distribution-BSD）"><a href="#伯克利软件发布版（Berkeley-Software-Distribution-BSD）" class="headerlink" title="伯克利软件发布版（Berkeley Software Distribution, BSD）"></a>伯克利软件发布版（Berkeley Software Distribution, BSD）</h1><p><img src="bsd.png" srcset="/img/loading.gif" lazyload alt="bsd"></p>
+<p>​    <strong>伯克利软件发布版</strong>（Berkeley Software Distribution, BSD）许可证：另一款被广泛使用的开源软件许可协议。相较于GPL许可证，BSD更加宽松，适合于商业用途。用户可以使用、修改和重新发布遵循该许可证的软件，并且可以将软件作为商业软件发布和销售，前提是需要满足下面3个条件。</p>
+<p>​    如果再发布的软件中包含开源代码，则源代码必须继续遵循BSD许可证。</p>
+<p>​    如果再发布的软件中只有二进制程序，则需要在相关文档或版权文件中声明原始代码遵循了BSD许可证。</p>
+<p>​    不允许用原始软件的名字、作者名字或机构名称进行市场推广。</p>
+<h1 id="Apache许可证（Apache-License）"><a href="#Apache许可证（Apache-License）" class="headerlink" title="Apache许可证（Apache License）"></a>Apache许可证（Apache License）</h1><p><img src="apache.png" srcset="/img/loading.gif" lazyload alt="apache"></p>
+<p>​    <strong>Apache许可证</strong>（Apache License）：顾名思义，是由Apache软件基金会负责发布和维护的开源许可协议。作为当今世界上最大的开源基金会，Apache不仅因此协议而出名，还因市场占有率第一的Web服务器软件而享誉行业。目前使用最广泛的Apache许可证是2004年发行的2.0版本，它在为开发人员提供版权及专利许可的同时，还允许用户拥有修改代码及再发布的自由。该许可证非常适合用于商业软件，现在热门的Hadoop、Apache HTTP Server、MongoDB等项目都是基于该许可证研发的。程序开发人员在开发遵循该许可证的软件时，要严格遵守下面4个条件。</p>
+<p>​    该软件及其衍生品必须继续使用Apache许可证。</p>
+<p>​    如果修改了程序源代码，需要在文档中进行声明。</p>
+<p>​    若软件是基于他人的源代码编写而成的，则需要保留原始代码的许可证、商标、专利声明及原作者声明的其他内容信息。</p>
+<p>​    如果再发布的软件中有声明文件，则需在此文件中注明基于了Apache许可证及其他许可证。</p>
+<h1 id="MIT许可证（Massachusetts-Institute-of-Technology-License）"><a href="#MIT许可证（Massachusetts-Institute-of-Technology-License）" class="headerlink" title="MIT许可证（Massachusetts Institute of Technology License）"></a>MIT许可证（Massachusetts Institute of Technology License）</h1><p><img src="MIT.png" srcset="/img/loading.gif" lazyload alt="MIT"></p>
+<p>​    <strong>MIT许可证</strong>（Massachusetts Institute of Technology License）：源于麻省理工学院，又称为X11协议。MIT许可证是目前限制最少的开源许可证之一，用户可以使用、复制、修改、再发布软件，而且只要在修改后的软件源代码中保留原作者的许可信息即可，因此普遍被商业软件（例如jQuery与Node.js）所使用。也就是说，MIT许可证宽松到一个新境界，即用户只要在代码中声明了MIT许可证和版权信息，就可以去做任何事情，而无须承担任何责任。</p>
+<h1 id="Mozilla公共许可证（Mozilla-Public-License，MPL）"><a href="#Mozilla公共许可证（Mozilla-Public-License，MPL）" class="headerlink" title="Mozilla公共许可证（Mozilla Public License，MPL）"></a>Mozilla公共许可证（Mozilla Public License，MPL）</h1><p><img src="Mozilla.png" srcset="/img/loading.gif" lazyload alt="Mozilla"></p>
+<p>​    <strong>Mozilla公共许可证</strong>（Mozilla Public License，MPL）：于1998年初由Netscape公司的Mozilla小组设计，原因是它们认为GPL和BSD许可证不能很好地解决开发人员对源代码的需求和收益之间的平衡关系，因此便将这两个协议进行融合，形成了MPL。2012年年初，Mozilla基金会发布了MPL 2.0版本（目前为止也是最新的版本），后续被用在Firefox、Thunderbird等诸多产品上。最新版的MPL公共许可证有以下特点。</p>
+<p>​    在使用基于MPL许可证的源代码时，后续只需要继续开源这部分特定代码即可，新研发的软件不用完全被该许可证控制。</p>
+<p>​    开发人员可以将基于MPL、GPL、BSD等多种许可证的代码一起混合使用。</p>
+<p>​    开发人员在发布新软件时，必须附带一个专门用于说明该程序的文件，内容要有原始代码的修改时间和修改方式。</p>
+<h1 id="6种许可证的总结"><a href="#6种许可证的总结" class="headerlink" title="6种许可证的总结"></a>6种许可证的总结</h1><p><img src="OpenSourceProtocol.jpg" srcset="/img/loading.gif" lazyload alt="OpenSourceProtocol"></p>
+<p>严格程度：<strong>MIT&gt;BSD&gt;Apache&gt;LGPL&gt;Mozilla&gt;GPL</strong></p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/GPL%E3%80%81LGPL%E3%80%81BSD%E3%80%81Apa%E3%80%81MIT%E3%80%81Mozilla/">GPL、LGPL、BSD、Apa、MIT、Mozilla</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2023/06/03/RockyLinux%E5%AE%89%E8%A3%85/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">RockyLinux安装</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

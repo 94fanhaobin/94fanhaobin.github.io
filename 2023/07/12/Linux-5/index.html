@@ -1,0 +1,710 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="sudosudo允许系统管理员让普通用户执行一些或者全部的root命令。 sudo特性：  sudo能够授权指定用户在指定主机上运行某些命令。如果未授权用户尝试使用 sudo，会提示联系管理员 sudo提供了丰富的日志，详细地记录了每个用户千了什么。它能够将日志传到中心主机或者日志服务器 sudo使用时间戳文件来执行类似的”检票”系统。当用户调用sudo并且输入它的密码时，用户获得了一张存活期为5">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux_5">
+<meta property="og:url" content="http://example.com/2023/07/12/Linux-5/index.html">
+<meta property="og:site_name" content="Linux_blog">
+<meta property="og:description" content="sudosudo允许系统管理员让普通用户执行一些或者全部的root命令。 sudo特性：  sudo能够授权指定用户在指定主机上运行某些命令。如果未授权用户尝试使用 sudo，会提示联系管理员 sudo提供了丰富的日志，详细地记录了每个用户千了什么。它能够将日志传到中心主机或者日志服务器 sudo使用时间戳文件来执行类似的”检票”系统。当用户调用sudo并且输入它的密码时，用户获得了一张存活期为5">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/2023/07/12/Linux-5/NTP_1.png">
+<meta property="og:image" content="http://example.com/2023/07/12/Linux-5/DNS_1.jpg">
+<meta property="og:image" content="http://example.com/2023/07/12/Linux-5/B_tree_1.jpg">
+<meta property="article:published_time" content="2023-07-12T12:07:30.000Z">
+<meta property="article:modified_time" content="2023-07-17T12:32:02.232Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/2023/07/12/Linux-5/NTP_1.png">
+  
+  
+  <title>Linux_5 - Linux_blog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hint.css@2/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Fluid</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                Archives
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                Categories
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                Tags
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                About
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="Linux_5">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2023-07-12 12:07" pubdate>
+        July 12, 2023 pm
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      9.1k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      76 分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Linux_5</h1>
+            
+            <div class="markdown-body">
+              <h1 id="sudo"><a href="#sudo" class="headerlink" title="sudo"></a>sudo</h1><p><code>sudo</code>允许系统管理员让普通用户执行一些或者全部的root命令。</p>
+<p><code>sudo</code>特性：</p>
+<ul>
+<li>sudo能够授权指定用户在指定主机上运行某些命令。如果未授权用户尝试使用 sudo，会提示联系管理员</li>
+<li>sudo提供了丰富的日志，详细地记录了每个用户千了什么。它能够将日志传到中心主机或者日志服务器</li>
+<li>sudo使用时间戳文件来执行类似的”检票”系统。当用户调用sudo并且输入它的密码时，用户获得了一张存活期为5分钟的票</li>
+<li>sudo的配置文件是sudoers文件，它允许系统管理员集中的管理用户的使用权限和使用的主机。它所存放的位置默认是在/etc/sudoers，属性必须为0440</li>
+</ul>
+<h2 id="配置文件："><a href="#配置文件：" class="headerlink" title="配置文件："></a>配置文件：</h2><figure class="highlight bash"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><pre><code class="hljs bash">/etc/sudo.conf<br></code></pre></td></tr></table></figure>
+
+<h2 id="授权规则配置文件："><a href="#授权规则配置文件：" class="headerlink" title="授权规则配置文件："></a>授权规则配置文件：</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">/etc/sudoers<br>/etc/sudoers.d<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs lua">?	任意单一字符<br>*	匹配任意长度字符<br>[wxc] 匹配其中一个字符<br>[!wxc]	除了这三个字符的其它字符<br>\x	转义<br><span class="hljs-string">[[alpha]]</span>	字母<br></code></pre></td></tr></table></figure>
+
+<p>sudoers授权规则格式：</p>
+<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs crmsh"><span class="hljs-keyword">user</span> <span class="hljs-title">host</span> = (runas) command<br>用户 登入主机=（代表用户） 命令<br></code></pre></td></tr></table></figure>
+
+<p>范例：</p>
+<figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ada">root	<span class="hljs-keyword">ALL</span>=(<span class="hljs-keyword">ALL</span>)	<span class="hljs-keyword">ALL</span><br></code></pre></td></tr></table></figure>
+
+<p>格式说明：</p>
+<figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs avrasm"><span class="hljs-symbol">user:</span>运行命令者的身份<br><span class="hljs-symbol">host:</span>通过那些主机<br>(runas)：以那个用户的身份<br>command：运行那些命令<br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="语法检查工具"><a href="#语法检查工具" class="headerlink" title="语法检查工具"></a>语法检查工具</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">/usr/sbin/visudo<br></code></pre></td></tr></table></figure>
+
+<h2 id="授权编辑规则文件的工具"><a href="#授权编辑规则文件的工具" class="headerlink" title="授权编辑规则文件的工具:"></a>授权编辑规则文件的工具:</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">/usr/bin/sudoedit<br></code></pre></td></tr></table></figure>
+
+<h2 id="执行授权命令"><a href="#执行授权命令" class="headerlink" title="执行授权命令:"></a>执行授权命令:</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">/usr/bin/sudo<br></code></pre></td></tr></table></figure>
+
+<h2 id="时间戳文件"><a href="#时间戳文件" class="headerlink" title="时间戳文件:"></a>时间戳文件:</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">/var/db/sudo<br></code></pre></td></tr></table></figure>
+
+<h2 id="日志文件"><a href="#日志文件" class="headerlink" title="日志文件:"></a>日志文件:</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">/var/log/secure<br></code></pre></td></tr></table></figure>
+
+
+
+<h1 id="PAM"><a href="#PAM" class="headerlink" title="PAM"></a>PAM</h1><h2 id="PAM-配置文件格式说明"><a href="#PAM-配置文件格式说明" class="headerlink" title="PAM 配置文件格式说明"></a>PAM 配置文件格式说明</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs bash"><br><span class="hljs-comment">#通用配置文件/etc/pam.conf格式,此格式不使用</span><br>application <span class="hljs-built_in">type</span> control module-path arguments<br><br><span class="hljs-comment">#专用配置文件/etc/pam.d/APP_NAME 格式</span><br><span class="hljs-comment">#注意：如/etc/pam.d存在，/etc/pam.conf将失效</span><br><span class="hljs-built_in">type</span> control module-path arguments<br><br>application：指服务名，如：telnet、login、ftp等，服务名字“OTHER”代表所有没有在该文件中明确配置的其它服务<br><span class="hljs-built_in">type</span>：       指模块类型，即功能<br>control ：   PAM库该如何处理与该服务相关的PAM模块的成功或失败情况，一个关健词实现<br>module-path：用来指明本模块对应的程序文件的路径名<br>Arguments：  用来传递给该模块的参数<br></code></pre></td></tr></table></figure>
+
+<p><strong>注意</strong>：修改PAM配置文件将马上生效</p>
+<p><strong>建议</strong>：编辑pam规则时，保持至少打开一个root会话，以防止root身份验证错误</p>
+<h2 id="模块类型"><a href="#模块类型" class="headerlink" title="模块类型"></a>模块类型</h2><ul>
+<li>Auth 账号的认证和授权</li>
+<li>Account 帐户的有效性，与账号管理相关的非认证类的功能，如：用来限制/允许用户对某个服务的访问时间，限制用户的位置(例如：root用户只能从控制台登录)</li>
+<li>Password 用户修改密码时密码复杂度检查机制等功能</li>
+<li>Session 用户会话期间的控制，如：最多打开的文件数，最多的进程数等</li>
+<li>-type 表示因为缺失而不能加载的模块将不记录到系统日志,对于那些不总是安装在系统上的模块有用</li>
+</ul>
+<h2 id="control"><a href="#control" class="headerlink" title="control"></a>control</h2><ul>
+<li>required ：一票否决，表示本模块必须返回成功才能通过认证，但是如果该模块返回失败，失败结果也不会立即通知用户，而是要等到同一type中的所有模块全部执行完毕，再将失败结果返回给应用程序，即为必要条件</li>
+<li>requisite ：一票否决，该模块必须返回成功才能通过认证，但是一旦该模块返回失败，将不再执行同一type内的任何模块，而是直接将控制权返回给应用程序。是一个必要条件</li>
+<li>sufficient ：一票通过，表明本模块返回成功则通过身份认证的要求，不必再执行同一type内的其它模块，但如果本模块返回失败可忽略，即为充分条件，优先于前面的required和requisite</li>
+<li>optional ：表明本模块是可选的，它的成功与否不会对身份认证起关键作用，其返回值一般被忽略</li>
+<li>include： 调用其他的配置文件中定义的配置信息</li>
+</ul>
+<h2 id="module-path"><a href="#module-path" class="headerlink" title="module-path"></a>module-path</h2><ul>
+<li>模块文件所在绝对路径：</li>
+<li>模块文件所在相对路径：/lib64/security目录下的模块可使用相对路径，如：pam_shells.so、pam_limits.so</li>
+<li>有些模块有自已的专有配置文件，在/etc/security/*.conf目 录下</li>
+</ul>
+<h2 id="arguments"><a href="#arguments" class="headerlink" title="arguments"></a>arguments</h2><ul>
+<li>debug ：该模块应当用syslog( )将调试信息写入到系统日志文件中</li>
+<li>no_warn ：表明该模块不应把警告信息发送给应用程序</li>
+<li>use_first_pass ：该模块不能提示用户输入密码，只能从前一个模块得到输入密码</li>
+<li>try_first_pass ：该模块首先用前一个模块从用户得到密码，如果该密码验证不通过，再提示用户输入新密码</li>
+<li>use_mapped_pass 该模块不能提示用户输入密码，而是使用映射过的密码</li>
+<li>expose_account 允许该模块显示用户的帐号名等信息，一般只能在安全的环境下使用，因为泄漏用户名会对安全造成一定程度的威胁</li>
+</ul>
+<h2 id="chrony搭建私有ntp服务"><a href="#chrony搭建私有ntp服务" class="headerlink" title="chrony搭建私有ntp服务"></a>chrony搭建私有ntp服务</h2><p><img src="NTP_1.png" srcset="/img/loading.gif" lazyload alt="NTP_1"></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@localhost ~]<span class="hljs-comment"># hostname -I</span><br>10.0.0.131 <br><br>[root@localhost ~]<span class="hljs-comment"># yum -y install chrony</span><br>CentOS- - PowerTools - mirrors.aliyun.com                                                    7.8 kB/s | 4.3 kB     00:00    <br>Package chrony-4.2-1.el8.rocky.1.0.x86_64 is already installed.<br>Dependencies resolved.<br>Nothing to <span class="hljs-keyword">do</span>.<br>Complete!<br><br>[root@centos8 ~]<span class="hljs-comment">#vim /etc/chrony.conf</span><br>server ntp.aliyun.com iburst<br>server ntp1.aliyun.com iburst<br>server ntp2.aliyun.com iburst<br><br>allow 0.0.0.0/0  <span class="hljs-comment">#加此行,指定允许同步的网段</span><br><br><span class="hljs-built_in">local</span> stratum 10 <span class="hljs-comment">#删除此行注释,当互联网无法连接,仍然可以为客户端提供时间同步服务</span><br><br>[root@localhost ~]<span class="hljs-comment"># systemctl restart chronyd</span><br><br><span class="hljs-comment">#服务启动后会打开端口123/udp</span><br>[root@localhost ~]<span class="hljs-comment"># ss -ntlu</span><br>Netid       State        Recv-Q       Send-Q             Local Address:Port             Peer Address:Port      Process       <br>udp         UNCONN       0            0                      127.0.0.1:323                   0.0.0.0:*                       <br>udp         UNCONN       0            0                        0.0.0.0:123                   0.0.0.0:*                       <br>udp         UNCONN       0            0                          [::1]:323                      [::]:*                       <br>tcp         LISTEN       0            128                      0.0.0.0:22                    0.0.0.0:*                       <br>tcp         LISTEN       0            128                         [::]:22                       [::]:*   <br><br><br><span class="hljs-comment">#客户端配置</span><br>[root@centos7 ~]<span class="hljs-comment">#vim /etc/chrony.conf</span><br>server 10.0.0.131 iburst<br>[root@centos7 ~]<span class="hljs-comment">#systemctl restart chronyd.service </span><br><span class="hljs-comment">#确认同步成功</span><br>[root@centos7 ~]<span class="hljs-comment">#chronyc sources -vn</span><br></code></pre></td></tr></table></figure>
+
+
+
+<h1 id="CDN原理"><a href="#CDN原理" class="headerlink" title="CDN原理"></a>CDN原理</h1><ol>
+<li>用户向浏览器输入<a target="_blank" rel="noopener" href="http://www.a.com这个域名,浏览器第一次发现本地没有dns缓存,则向网站的dns服务器请求/">www.a.com这个域名，浏览器第一次发现本地没有dns缓存，则向网站的DNS服务器请求</a></li>
+<li>网站的DNS域名解析器设置了CNAME，指向了<a target="_blank" rel="noopener" href="http://www.a.tbcdn.com请求指向了cdn网络中的智能dns负载均衡系统/">www.a.tbcdn.com请求指向了CDN网络中的智能DNS负载均衡系统</a></li>
+<li>智能DNS负载均衡系统解析域名，把对用户响应速度最快的IP节点返回给用户</li>
+<li>用户向该IP节点(CDN服务器) 发出请求</li>
+<li>由于是第一次访问，CDN服务器会通过Cache内部专用DNS解析得到此域名的原web站点IP，向原站点服务器发起请求，并在CDN服务器上缓存内容</li>
+<li>请求结果发给用户</li>
+</ol>
+<h1 id="搭建智能DNS，实现不同地域客户端解析到不同主机"><a href="#搭建智能DNS，实现不同地域客户端解析到不同主机" class="headerlink" title="搭建智能DNS，实现不同地域客户端解析到不同主机"></a>搭建智能DNS，实现不同地域客户端解析到不同主机</h1><h2 id="准备："><a href="#准备：" class="headerlink" title="准备："></a>准备：</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs bash">需要五台主机<br>DNS主服务器和web服务器1: 10.0.0.8/24，172.16.0.8/16<br>web服务器2: 10.0.0.7/24<br>web服务器3: 172.16.0.7/16<br>DNS客户端1: 10.0.0.6/24<br>DNS客户端2: 172.16.0.6/16<br><br>关闭SETinux<br>关闭防火墙<br>时间同步<br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="DNS服务器的网卡配置"><a href="#DNS服务器的网卡配置" class="headerlink" title="DNS服务器的网卡配置"></a>DNS服务器的网卡配置</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment">#配置两个IP地址</span><br><span class="hljs-comment">#eth0: 10.0.0.8/24</span><br><span class="hljs-comment">#eth1: 172.16.0.8/16</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="主DNS服务端配置文件实现-view"><a href="#主DNS服务端配置文件实现-view" class="headerlink" title="主DNS服务端配置文件实现 view"></a>主DNS服务端配置文件实现 view</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><code class="hljs bash">yum insta11 <span class="hljs-built_in">bind</span> -y<br><br>vim /etc/named.conf<br><span class="hljs-comment">#在文件最前面加下面行</span><br>ac1 beijingnet &#123;<br>	10.0.0.0/24;<br>&#125;;<br>ac1 shanghainet &#123;<br>	172.16.0.0/16;<br>&#125;<br>acl othernet &#123;<br>	any<br>&#125;<br><br><span class="hljs-comment">#注释掉下面两行</span><br>// listen-on port 53 &#123; 127.0.0.1; &#125;;<br>// a11ow-query &#123; localhost; &#125;;<br><br><span class="hljs-comment">#其它略</span><br><br><span class="hljs-comment"># 创建view</span><br>view beijingview &#123;<br>	match-clients  &#123; beijingnet;&#125;;<br>	include <span class="hljs-string">&quot;/etc/named.rfc1912.zones.bj&quot;</span><br>&#125;;<br><br>view shanghaiview &#123;<br>	match-clients &#123; shanghainet;&#125;;<br>	include <span class="hljs-string">&quot;/etc/named.rfc1912 zones.sh&quot;</span>;<br>&#125;;<br><br>view otherview &#123;<br>	match-clients &#123; othernet;&#125;;<br>	include <span class="hljs-string">&quot;/etc/named.rfc1912.zones.other&quot;</span>;<br>&#125;;<br>include <span class="hljs-string">&quot;/etc/named.root.key&quot;</span>;<br><br></code></pre></td></tr></table></figure>
+
+<h3 id="实现区域配置文件"><a href="#实现区域配置文件" class="headerlink" title="实现区域配置文件"></a>实现区域配置文件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><code class="hljs bash">vim /etc/named.rfc1912.zones.bj<br>zone <span class="hljs-string">&quot;.&quot;</span> IN &#123;<br>	<span class="hljs-built_in">type</span> hint;<br>	file <span class="hljs-string">&quot;named.ca&quot;</span>;<br>&#125;;<br>zone <span class="hljs-string">&quot;magedu .org&quot;</span> &#123;<br>	<span class="hljs-built_in">type</span> master;<br>	file <span class="hljs-string">&quot;magedu.org.zone.bj&quot;</span>;<br>&#125;;<br><br>vim /etc/named.rfc1912.zones.sh<br>zone <span class="hljs-string">&quot;.&quot;</span> IN &#123;<br>	<span class="hljs-built_in">type</span> hint;<br>	file <span class="hljs-string">&quot;named.ca&quot;</span>;<br>&#125;;<br>zone <span class="hljs-string">&quot;magedu.org&quot;</span> &#123;<br>	<span class="hljs-built_in">type</span> master;<br>	file <span class="hljs-string">&quot;magedu.org.zone.sh&quot;</span>;<br>&#125;;<br>vim /etc/named.rfc1912.zones.other<br>zone <span class="hljs-string">&quot;.&quot;</span> IN &#123;<br>	<span class="hljs-built_in">type</span> hint;<br>	file <span class="hljs-string">&quot;named.ca&quot;</span>;<br>&#125;;<br>zone <span class="hljs-string">&quot;magedu .org” &#123;</span><br><span class="hljs-string">	type master;</span><br><span class="hljs-string">	file &quot;</span>magedu.org.zone.other<span class="hljs-string">&quot;;</span><br><span class="hljs-string">&#125;;</span><br><span class="hljs-string"></span><br><span class="hljs-string">chgrp named /etc/named.rfc1912.zones.bj</span><br><span class="hljs-string">chgrp named /etc/named.rfc1912.zones.sh</span><br><span class="hljs-string">chgrp named /etc/named.rfc1912.zones.other</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="创建区域数据库文件"><a href="#创建区域数据库文件" class="headerlink" title="创建区域数据库文件"></a>创建区域数据库文件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><code class="hljs bash">vim /var/named/magedu.org.zone.bj<br><span class="hljs-variable">$TTL</span> 1D<br>@	IN SOA master admin.magedu.org. (<br>					2019042214 ; serial<br>					1D ; refresh<br>					1H ; retry<br>					1W ; expire<br>					3H ) ; minimum<br>			NS	master<br>master		A	10.0.0.8<br>websrv		A	10.0.0.7<br>www			CNAME  websrv<br><br>vim /var/named/magedu.org.zone.sh<br><span class="hljs-variable">$TTL</span> 1D<br>@	IN SOA master admin.magedu.org. (<br>					2019042214 ; serial<br>					1D ; refresh<br>					1H ; retry<br>					1W ; expire<br>					3H ) ; minimum<br>			NS	master<br>master		A	10.0.0.8<br>websrv		A	172.16.0.7<br>www			CNAME  websrv<br><br>vim /var/named/magedu.org.zone.other<br><span class="hljs-variable">$TTL</span> 1D<br>@	IN SOA master admin.magedu.org. (<br>					2019042214 ; serial<br>					1D ; refresh<br>					1H ; retry<br>					1W ; expire<br>					3H ) ; minimum<br>			NS	master<br>master		A	10.0.0.8<br>websrv		A	127.0.0.1<br>www			CNAME  websrv<br><br><span class="hljs-built_in">chgrp</span> named /var/named/magedu.org.zone.bj<br><span class="hljs-built_in">chgrp</span> named /var/named/magedu.org.zone.sh<br><span class="hljs-built_in">chgrp</span> named /var/named/magedu.org.zone.other<br><br>systemct1 start named	<span class="hljs-comment">#第一次启动服务</span><br>rndc reload				<span class="hljs-comment">#不是第一次启动服务</span><br><br></code></pre></td></tr></table></figure>
+
+<h3 id="实现位于不同区域的三个WEB服务器"><a href="#实现位于不同区域的三个WEB服务器" class="headerlink" title="实现位于不同区域的三个WEB服务器"></a>实现位于不同区域的三个WEB服务器</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment">#分别在三台主机上安装http服务</span><br><span class="hljs-comment">#在web服务器1: 10.0.0.8/24实现</span><br>yum insta11 httpd<br><span class="hljs-built_in">echo</span> www.magedu.org <span class="hljs-keyword">in</span> other &gt; /var/www/html/index.html<br>systemct1 start httpd<br><span class="hljs-comment">#在web服务器2: 10.0.0.7/16</span><br><span class="hljs-built_in">echo</span> www.magedu.org <span class="hljs-keyword">in</span> Beijing &gt; /var/www/html/index.html<br>systemct1 start httpd<br><span class="hljs-comment">#在web服务器3: 172.16.0.7/16</span><br>yum install httpd<br><span class="hljs-built_in">echo</span> www.magedu.org <span class="hljs-keyword">in</span> shanghai &gt; /var/www/html/index.html<br>systemctl start httpd<br><br></code></pre></td></tr></table></figure>
+
+<h3 id="客户端测试"><a href="#客户端测试" class="headerlink" title="客户端测试"></a>客户端测试</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment">#分别在三台主机上访问</span><br><span class="hljs-comment">#DNS客户端1: 10.0.0.6/24 实现，确保DNS指向10.0.0.8</span><br>curl www.magedu.org<br>www.magedu.org <span class="hljs-keyword">in</span> Beijing<br><span class="hljs-comment">#DNS客户端2: 172.16.0.6/16实现，确保DNS指向172.16.0.8</span><br>curl www.magedu.org<br>www.magedu.org <span class="hljs-keyword">in</span> shanghai<br><span class="hljs-comment">#DNS客户端3: 10.0.0.8实现，，确保DNS指向127.0.0.1</span><br>curl www.magedu.org<br>www.magedu.org <span class="hljs-keyword">in</span> other<br></code></pre></td></tr></table></figure>
+
+
+
+<h1 id="DNS解析流程"><a href="#DNS解析流程" class="headerlink" title="DNS解析流程"></a>DNS解析流程</h1><p>DNS 域名解析，简单地说就是把域名翻译成 IP 地址。例如：把 <a target="_blank" rel="noopener" href="http://www.baidu.com/">www.baidu.com</a> 这个域名翻译成对应 IP 220.181.38.251，这里只是举个例子。</p>
+<p><img src="DNS_1.jpg" srcset="/img/loading.gif" lazyload alt="DNS_1"></p>
+<p>​    图中分 8 个步骤介绍了域名解析的流程，但在此之前会先检查本机的缓存配置+ hosts 解析，然后才真正执行上图的流程：</p>
+<p><strong>浏览器缓存检查</strong></p>
+<p>​    浏览器会首先搜索浏览器自身的 DNS 缓存，缓存时间比较短，大概只有1分钟，且只能容纳 1000 条缓存，看自身的缓存中是否有对应的条目，而且没有过期，如果有且没有过期则解析到此结束。</p>
+<p><strong>操作系统缓存检查 + hosts 解析</strong></p>
+<p>​    如果浏览器的缓存里没有找到对应的条目，操作系统也会有一个域名解析的过程，那么浏览器先搜索操作系统的 DNS 缓存中是否有这个域名对应的解析结果，如果找到且没有过期则停止搜索，解析到此结束。</p>
+<p>​    在 Linux 中可以通过 /etc/hosts 文件来设置，可以将任何域名解析到任何能够访问的IP 地址。如果在这里指定了一个域名对应的 IP 地址，那么浏览器会首先使用这个 IP地址。当解析到这个配置文件中的某个域名时，操作系统会在缓存中缓存这个解析结果，缓存的时间同样是受这个域名的失效时间和缓存的空间大小控制的。</p>
+<ul>
+<li>第一步</li>
+</ul>
+<p>​    客户端通过浏览器访问域名为 <a target="_blank" rel="noopener" href="http://www.baidu.com/">www.baidu.com</a> (<a target="_blank" rel="noopener" href="http://www.baidu.com/">http://www.baidu.com</a>) 的网站，发起查询该域名的 IP 地址的 DNS 请求。该请求发送到了本地 DNS 服务器上。本地 DNS 服务器会首先查询它的缓存记录，如果缓存中有此条记录，就可以直接返回结果。如果没有，本地 DNS 服务器还要向 DNS 根服务器进行查询。</p>
+<ul>
+<li>第二步</li>
+</ul>
+<p>​    本地 DNS 服务器向根服务器发送 DNS 请求，请求域名为 <a target="_blank" rel="noopener" href="http://www.baidu.com/">www.baidu.com</a> (<a target="_blank" rel="noopener" href="http://www.baidu.com/">http://www.baidu.com</a>) 的 IP 地址。</p>
+<ul>
+<li>第三步</li>
+</ul>
+<p>根服务器经过查询，没有记录该域名及 IP 地址的对应关系。但是会告诉本地 DNS 服务器，可以到域名服务器上继续查询，并给出域名服务器的地址(.com 服务器)。</p>
+<ul>
+<li>第四步</li>
+</ul>
+<p>本地 DNS 服务器向 .com 服务器发送 DNS 请求，请求域名 <a target="_blank" rel="noopener" href="http://www.baidu.com/">www.baidu.com</a> (<a target="_blank" rel="noopener" href="http://www.baidu.com/">http://www.baidu.com</a>) 的 IP 地址。</p>
+<ul>
+<li>第五步</li>
+</ul>
+<p>com 服务器收到请求后，不会直接返回域名和 IP 地址的对应关系，而是告诉本地DNS 服务器，该域名可以在 baidu.com 域名服务器上进行解析获取 IP 地址，并告诉 baidu.com 域名服务器的地址。</p>
+<ul>
+<li>第六步</li>
+</ul>
+<p>本地 DNS 服务器向 baidu.com 域名服务器发送 DNS 请求，请求域名 <a target="_blank" rel="noopener" href="http://www.baidu.com/">www.baidu.com</a> (<a target="_blank" rel="noopener" href="http://www.baidu.com/">http://www.baidu.com</a>) 的 IP 地址。</p>
+<ul>
+<li>第七步</li>
+</ul>
+<p>baidu.com 服务器收到请求后，在自己的缓存表中发现了该域名和 IP 地址的对应关系，并将 IP 地址返回给本地 DNS 服务器。</p>
+<ul>
+<li>第八步</li>
+</ul>
+<p>本地 DNS 服务器将获取到与域名对应的 IP 地址返回给客户端，并且将域名和 IP 地址的对应关系保存在缓存中，以备下次别的用户查询时使用。</p>
+<h1 id="iptables五表五链"><a href="#iptables五表五链" class="headerlink" title="iptables五表五链"></a>iptables五表五链</h1><p><strong>五表</strong></p>
+<ul>
+<li>filter：过滤规则表，根据预定义的规则过滤符合条件的数据包（默认表）</li>
+<li>nat：地址转换规则表</li>
+<li>mangle：修改数据标记位规则表</li>
+<li>raw：关闭启用的连接跟踪机制，加快封包穿越防火墙速度</li>
+<li>security：用于强制访问控制（MAC）网络规则，由 Linux 安全模块（如 SELinux）实现</li>
+</ul>
+<p>优先级顺序：</p>
+<p><strong>security</strong> –&gt; <strong>raw</strong> –&gt; <strong>mangle</strong> –&gt; <strong>nat</strong> –&gt; <strong>filter</strong></p>
+<p><strong>五链</strong></p>
+<p>规则链（chain）名或者说五个钩子函数（hook functions）包括：</p>
+<ul>
+<li>INPUT链：处理输入数据包</li>
+<li>OUTPUT链：处理输出数据包</li>
+<li>FORWARD链：处理转发数据包</li>
+<li>PREROUTING链：用于目标地址转换（DNAT）</li>
+<li>POSTOUTING链：用于源地址转换（SNAT）</li>
+</ul>
+<p>数据报文的流向：</p>
+<ul>
+<li>到本机某进程的报文：PREROUTING –&gt; INPUT</li>
+<li>由本机转发的报文：PREROUTING –&gt; FORWARD –&gt; POSTROUTING</li>
+<li>由本机的某进程发出报文（通常为响应报文）：OUTPUT –&gt; POSTROUTING</li>
+</ul>
+<p><strong>表与链</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>raw</th>
+<th>mangle</th>
+<th>nat</th>
+<th>filter</th>
+<th>security</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>PREROUTING</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>INPUT</td>
+<td></td>
+<td>✓</td>
+<td></td>
+<td>✓</td>
+<td></td>
+</tr>
+<tr>
+<td>FORWARD</td>
+<td></td>
+<td>✓</td>
+<td></td>
+<td>✓</td>
+<td></td>
+</tr>
+<tr>
+<td>OUTPUT</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td></td>
+</tr>
+<tr>
+<td>POSTROUTING</td>
+<td></td>
+<td>✓</td>
+<td>✓</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<h1 id="防火墙实验"><a href="#防火墙实验" class="headerlink" title="防火墙实验"></a>防火墙实验</h1><p>iptables/firewalld/nftable 实现主机防火墙。5000-6000 端口仅 192.168.0.0/24 网段内的主机访问</p>
+<p>Iptables</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">iptables -A INPUT -p tcp --dport 5000:6000 ! -s 192.168.0.0/24 -j REJECT<br></code></pre></td></tr></table></figure>
+
+<p>firewalld</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">firewalld-cmd --permanent --zone=public --add-rich-rule=<span class="hljs-string">&#x27;rule family=ipv4 source address=192.168.0.0/24 port port=5000-6000 accept&#x27;</span> <br></code></pre></td></tr></table></figure>
+
+
+
+<h1 id="mysql的发行版"><a href="#mysql的发行版" class="headerlink" title="mysql的发行版"></a>mysql的发行版</h1><p>常见 MySQL 发行版本：</p>
+<ul>
+<li>MySQL 官方版本：分为社区版和企业版，企业版性能略强，提供了更多的功能和工具</li>
+<li>Percona MySQL：基于官方社区版本二次开发，增加了一些 MySQL 官方企业版才有的功能，同时对官方社区版进行了一些优化</li>
+<li>MariaDB：MySQL 初创者开发，很大程度上兼容 MySQL，可以很容易的将数据从 MySQL 迁移到 MariaDB 上</li>
+</ul>
+<h1 id="mysql索引的作用"><a href="#mysql索引的作用" class="headerlink" title="mysql索引的作用"></a>mysql索引的作用</h1><p>索引是对数据库表中一列或者多列的值进行排序的一种结构，就像是一本书的目录，使用索引可以快速访问数据表中的特定信息，提高数据查询效率</p>
+<p>使用索引可以：</p>
+<ol>
+<li>大大加快数据检索的速度 </li>
+<li>加速表和表之间的连接 </li>
+<li>将随机I/O变成顺序I/O</li>
+<li>帮助引擎层避免排序和临时表</li>
+</ol>
+<h1 id="mysql-btree索引的原理"><a href="#mysql-btree索引的原理" class="headerlink" title="mysql btree索引的原理"></a>mysql btree索引的原理</h1><p>B-Tree 结构的数据可以让系统高效的找到数据所在的磁盘块</p>
+<p>B树的特征：</p>
+<ul>
+<li><p>关键字集合分布在整颗树中；</p>
+</li>
+<li><p>任何一个关键字出现且只出现在一个结点中；</p>
+</li>
+<li><p>搜索有可能在非叶子结点结束；</p>
+</li>
+<li><p>其搜索性能等价于在关键字全集内做一次二分查找；</p>
+</li>
+<li><p>自动层次控制；</p>
+<p><img src="B_tree_1.jpg" srcset="/img/loading.gif" lazyload alt="B_tree_1"></p>
+</li>
+</ul>
+<p>B树的搜索，从根结点开始，对结点内的关键字（有序）序列进行二分查找，如果命中则结束，否则进入查询关键字所属范围的儿子结点；重复，直到所对应的儿子指针为空，或已经是叶子结点</p>
+<h1 id="mysql安全加固"><a href="#mysql安全加固" class="headerlink" title="mysql安全加固"></a>mysql安全加固</h1><p>安装部署完 MySQL 服务后，系统提供了一个安全加固脚本 <code>mysql_secure_installation</code>，用以实现：</p>
+<p><strong>安全加固脚本</strong></p>
+<ol>
+<li>设置安全强度密码</li>
+<li>为root用户设置密码</li>
+<li>删除匿名账号</li>
+<li>取消root用户远程登录</li>
+<li>删除test库和对test库的访问权限</li>
+<li>刷新授权表使修改生效  </li>
+</ol>
+<p><strong>低版本安全加固脚本</strong></p>
+<ol>
+<li>为root用户设置密码</li>
+<li>删除匿名账号</li>
+<li>取消root用户远程登录</li>
+<li>删除test库和对test库的访问权限</li>
+<li>刷新授权表使修改生效</li>
+</ol>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2023/07/31/Linux-6/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Linux_6</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/07/03/awk%E5%B7%A5%E5%85%B7/">
+                        <span class="hidden-mobile">awk工具</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>
